@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">QuizzAppMaster</string>
+
+    <string name="jugar_text">Jugar</string>
+    <string name="opciones_text">Opciones</string>
+
+
+    <string name="On_text">On</string>
+    <string name="Off_text">Off</string>
 </resources>
