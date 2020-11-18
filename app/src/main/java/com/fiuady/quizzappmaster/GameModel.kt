@@ -26,6 +26,11 @@ class GameModel: ViewModel() {
 
 
             Question(0, "¿Cuánto vale un tiro de media cancha en basquetbol?", 3, "3","2","5",  "1 ", "3", false, false, false, false, false, false, false, false),
+            Question(0, "¿En que año fueron los últimos fuego olímpicos?", 3, "2000","2016","2018",  "2014 ", "2004", false, false, false, false, false, false, false, false),
+            Question(0, "¿Qué deporte no se juega en cesped?", 3, "Futbol Americano","Futbol Soccer","Baloncesto",  "Rugby", "Ninguna de las anteriores", false, false, false, false, false, false, false, false),
+            Question(0, "¿Cuánto vale un tiro de media cancha en basquetbol?", 3, "3","2","5",  "1 ", "3", false, false, false, false, false, false, false, false),
+            Question(0, "¿Cuánto vale un tiro de media cancha en basquetbol?", 3, "3","2","5",  "1 ", "3", false, false, false, false, false, false, false, false),
+
 
 
 
