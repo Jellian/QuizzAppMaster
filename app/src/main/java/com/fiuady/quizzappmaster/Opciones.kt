@@ -36,11 +36,23 @@ class Opciones : AppCompatActivity() {
         radioGroup = findViewById(R.id.radioGroup1)
         switch = findViewById(R.id.pistas);
 
+
+        temascheckboxes.add(findViewById(R.id.ciencia_checkbox))
+        temascheckboxes.add(findViewById(R.id.cine_checkbox))
+        temascheckboxes.add(findViewById(R.id.deporte_checkbox))
+        temascheckboxes.add(findViewById(R.id.musica_checkbox))
+        temascheckboxes.add(findViewById(R.id.arte_checkbox))
+        temascheckboxes.add(findViewById(R.id.videojuegos_checkbox))
+
+
+
+
         val spinner: Spinner = findViewById(R.id.numero_preguntas)
         val spinnerpistas: Spinner = findViewById(R.id.numero_pistas)
 
         spinner.setAdapter(ArrayAdapter<Int>(this, android.R.layout.simple_spinner_item, num_pre))
         spinnerpistas.setAdapter(ArrayAdapter<Int>(this, android.R.layout.simple_spinner_item, num_pistas))
+
 
 
 
