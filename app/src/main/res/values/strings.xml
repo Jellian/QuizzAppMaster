@@ -10,17 +10,229 @@
     <string name="correct_text">RIGHT!</string>
     <string name="incorrect_text">WRONG!</string>
 
-    <string name="question_text_1">Pensamos demasiado y sentimos muy poco</string>
-    <string name="question_answer_1a">El gran dictador</string>
-    <string name="question_answer_1b">Vida de Perros</string>
-    <string name="question_answer_1c">El gordo y el flaco</string>
-    <string name="question_answer_1d">La clase ociosa</string>
-    <string name="respuesta_correcta1">El gran dictador</string>
-    <string name="question_text_2">Hakuna Matata</string>
-    <string name="question_answer_2a">El Rey León</string>
-    <string name="question_answer_2b">Pinocho</string>
-    <string name="question_answer_2c">Zootopia</string>
-    <string name="question_answer_2d">Cenicienta</string>
-    <string name="respuesta_correcta2">El Rey León</string>
+<!-- Cine-->
+
+<string name = "question_text_1">"Pensamos demasiado y sentimos muy poco"</string>
+<string name = "question_answer_1a">El Gran Dictador</string>
+<string name = "question_answer_1b">Vida de Perros</string>
+<string name = "question_answer_1c">El gordo y el flaco</string>
+<string name = "question_answer_1d">La clase osciosa</string>
+<string name = "respuesta:correcta1">El Gran Dictador</string>
+
+<string name = "question_text_2">Hakuna Matata</string>
+<string name = "question_answer_2a">Pinocho</string>
+<string name = "question_answer_2b">Zootopia</string>
+<string name = "question_answer_2c">El Rey León</string>
+<string name = "question_answer_2d">Cenicienta</string>
+<string name = "respuesta:correcta2">El Rey León</string>
+
+<string name = "question_text_3">Yo soy tu padre</string>
+<string name = "question_answer_3a">Harry Potter</string>
+<string name = "question_answer_3b">El señor de los anillos</string>
+<string name = "question_answer_3c">Star Wars</string>
+<string name = "question_answer_3d">Narnia</string>
+<string name = "respuesta:correcta3">Star Wars</string>
+
+<string name = "question_text_4">Puede que no sea muy listo, pero sé lo que es el amor</string>
+<string name = "question_answer_4a">Forest Gump</string>
+<string name = "question_answer_4b">Milagros inesperados</string>
+<string name = "question_answer_4c">Quisiera ser grande</string>
+<string name = "question_answer_4d">En busca de la felicidad</string>
+<string name = "respuesta:correcta4">Forest Gump</string>
+
+<string name = "question_text_5">Dicen que los mejores brillan con más fuerza en las situaciones más difíciles</string>
+<string name = "question_answer_5a">Mi vecino Totoro</string>
+<string name = "question_answer_5b">Recuerdos del ayer</string>
+<string name = "question_answer_5c">El castillo ambulate</string>
+<string name = "question_answer_5d">Mary y la flor de la bruja</string>
+<string name = "respuesta:correcta5">El castillo ambulate</string>
+
+<!-- Música-->
+
+<string name = "question_text_6">Sonata "Claro de Luna"</string>
+<string name = "question_answer_6a">Bach</string>
+<string name = "question_answer_6b">Beethoven</string>
+<string name = "question_answer_6c">Vivaldi</string>
+<string name = "question_answer_6d">Tchaikovsky</string>
+<string name = "respuesta:correcta6">Beethoven</string>
+
+
+<string name = "question_text_7">Las cuatro estaciones</string>
+<string name = "question_answer_7a">Beethoven</string>
+<string name = "question_answer_7b">Tchaikovsky</string>
+<string name = "question_answer_7c">Vivaldi</string>
+<string name = "question_answer_7d">Bach</string>
+<string name = "respuesta:correcta7">Vivaldi</string>
+
+<string name = "question_text_8">Ballet de Rosamunda</string>
+<string name = "question_answer_8a">Sibelius</string>
+<string name = "question_answer_8b">Beethoven</string>
+<string name = "question_answer_8c">Schubert</string>
+<string name = "question_answer_8d">Vivaldi</string>
+<string name = "respuesta:correcta8">Schubert</string>
+
+<string name = "question_text_9">La flauta mágica – La reina de la noche</string>
+<string name = "question_answer_9a">Paganini</string>
+<string name = "question_answer_9b">Sibelius</string>
+<string name = "question_answer_9c">Tchaikovsky</string>
+<string name = "question_answer_9d">Mozart</string>
+<string name = "respuesta:correcta9">Mozart</string>
+
+<string name = "question_text_10">El destino toca a la puerta</string>
+<string name = "question_answer_10a">Brahms</string>
+<string name = "question_answer_10b">Dvořák</string>
+<string name = "question_answer_10c">Beethoven</string>
+<string name = "question_answer_10d">Grieg</string>
+<string name = "respuesta:correcta10">Beethoven</string>
+
+
+<!-- Ciencia-->
+
+<string name = "question_text_11">¿Qué tipo de carga tienen los electrones?</string>
+<string name = "question_answer_11a">Carga positiva</string>
+<string name = "question_answer_11b">Carga negativa</string>
+<string name = "question_answer_11c">Carga neutra</string>
+<string name = "question_answer_11d">No tiene cargas</string>
+<string name = "respuesta:correcta11">Carga negativa</string>
+
+<string name = "question_text_12">¿Qué es el H2O?</string>
+<string name = "question_answer_12a">Agua</string>
+<string name = "question_answer_12b">Sodio</string>
+<string name = "question_answer_12c">Sal</string>
+<string name = "question_answer_12d">Hidrógeno</string>
+<string name = "respuesta:correcta12">Agua</string>
+
+<string name = "question_text_13">¿Cuánto es 10 + 90 -50 +30</string>
+<string name = "question_answer_13a">30</string>
+<string name = "question_answer_13b">80</string>
+<string name = "question_answer_13c">100</string>
+<string name = "question_answer_13d">25</string>
+<string name = "respuesta:correcta13">80</string>
+
+<string name = "question_text_14">¿Cuál es la ciencia que estudia los insectos?</string>
+<string name = "question_answer_14a">psicología</string>
+<string name = "question_answer_14b">filosofía</string>
+<string name = "question_answer_14c">entomología</string>
+<string name = "question_answer_14d">paleontología</string>
+<string name = "respuesta:correcta14">entomología</string>
+
+<string name = "question_text_15">¿Cuál es el nombre científico de los glóbulos rojos?</string>
+<string name = "question_answer_15a">leucocitos</string>
+<string name = "question_answer_15b">Megacariocitos</string>
+<string name = "question_answer_15c">eritrocitos</string>
+<string name = "question_answer_15d">Hematocitos</string>
+<string name = "respuesta:correcta15">eritrocitos</string>
+
+<!-- Deporte-->
+
+<string name = "question_text_11">¿Cuánto vale un tiro de media cancha en basquetbol?</string>
+<string name = "question_answer_11a">3</string>
+<string name = "question_answer_11b">2</string>
+<string name = "question_answer_11c">5</string>
+<string name = "question_answer_11d">1</string>
+<string name = "respuesta:correcta11">3</string>
+
+<string name = "question_text_12">¿En que año fueron los últimos fuego olímpicos?</string>
+<string name = "question_answer_12a">2000</string>
+<string name = "question_answer_12b">2018</string>
+<string name = "question_answer_12c">2016</string>
+<string name = "question_answer_12d">2004</string>
+<string name = "respuesta:correcta12">2016</string>
+
+<string name = "question_text_13">¿Qué deporte no se juega en cesped?</string>
+<string name = "question_answer_13a">Baloncesto</string>
+<string name = "question_answer_13b">Futbol Americano</string>
+<string name = "question_answer_13c">Futbol Soccer</string>
+<string name = "question_answer_13d">Rugby</string>
+<string name = "respuesta:correcta13">Baloncesto</string>
+
+<string name = "question_text_14">¿Quién es el único jugador de la historia que ha obtenido 3 veces la Copa del Mundo?</string>
+<string name = "question_answer_14a">Zinedine Zidane</string>
+<string name = "question_answer_14b">Diego Maradona</string>
+<string name = "question_answer_14c">Hugo Sanchez</string>
+<string name = "question_answer_14d">Pelé</string>
+<string name = "respuesta:correcta14">Pelé</string>
+
+<string name = "question_text_15">¿Es el lugar en donde descansan los jugadores de baseball?</string>
+<string name = "question_answer_15a">Primera Base</string>
+<string name = "question_answer_15b">Gradas</string>
+<string name = "question_answer_15c">Dogout</string>
+<string name = "question_answer_15d">Palco</string>
+<string name = "respuesta:correcta15">Dogout</string>
+
+<!-- Arte-->
+
+<string name = "question_text_16">¿Quien es el autor de la mona lisa?</string>
+<string name = "question_answer_16a">Vicent Van Gogh</string>
+<string name = "question_answer_16b">Leonardo Da Vinci</string>
+<string name = "question_answer_16c">Salvador Dalí</string>
+<string name = "question_answer_16d">Miguel Ángel</string>
+<string name = "respuesta:correcta16">Leonardo Da Vinci</string>
+
+<string name = "question_text_17">Para Vincent van Gogh también fue muy importante una persona que le brindó apoyo financiero de manera continua y desinteresada, ¿quién fue?</string>
+<string name = "question_answer_17a">Sus padres</string>
+<string name = "question_answer_17b">Su hermano Cornelius</string>
+<string name = "question_answer_17c">Su hermano Theo</string>
+<string name = "question_answer_17d">Un adinerado de Zundert</string>
+<string name = "respuesta:correcta17">Su hermano Theo</string>
+
+<string name = "question_text_18">El Juicio Final o El Juicio Universal es un mural realizado al fresco que se encuentra en la Capilla Sixtina y fue pintado por:</string>
+<string name = "question_answer_18a">Pinturicchio</string>
+<string name = "question_answer_18b">Miguel Ángel</string>
+<string name = "question_answer_18c">Pietro Perugino</string>
+<string name = "question_answer_18d">Sandro Botticelli</string>
+<string name = "respuesta:correcta18">Miguel Ángel</string>
+
+<string name = "question_text_19">¿Quién es el pintor de Las meninas?</string>
+<string name = "question_answer_19a">Giotto</string>
+<string name = "question_answer_19b">Kandinsky</string>
+<string name = "question_answer_19c">Caravaggio</string>
+<string name = "question_answer_19d">Diego Velázquez</string>
+<string name = "respuesta:correcta19">Diego Velázquez</string>
+
+<string name = "question_text_20">Hacer arte nunca ha sido sencillo y esta influyente familia del Renacimiento destacó por ser mecenas de importantes artistas y científicos de su época:</string>
+<string name = "question_answer_20a">Médici</string>
+<string name = "question_answer_20b">Gozzolli</string>
+<string name = "question_answer_20c">Alighieri</string>
+<string name = "question_answer_20d">Pitti</string>
+<string name = "respuesta:correcta20">Médici</string>
+
+
+<!-- Videojuegos-->
+<string name = "question_text_21">¿Qué videojuego fue primero?</string>
+<string name = "question_answer_21a">Pong</string>
+<string name = "question_answer_21b">Pac-man</string>
+<string name = "question_answer_21c">Tetris</string>
+<string name = "question_answer_21d">Mario bros</string>
+<string name = "respuesta:correcta21">Pong</string>
+
+<string name = "question_text_22">¿Cuál es un videojuego de autos de carrera?</string>
+<string name = "question_answer_22a">Snake</string>
+<string name = "question_answer_22b">Frogger</string>
+<string name = "question_answer_22c">R-type</string>
+<string name = "question_answer_22d">Top gear</string>
+<string name = "respuesta:correcta22">Top gear</string>
+
+<string name = "question_text_23">¿Cómo se llama el enemigo de Sonic?</string>
+<string name = "question_answer_23a">Robotech</string>
+<string name = "question_answer_23b">Tails</string>
+<string name = "question_answer_23c">Dr. Robotnik</string>
+<string name = "question_answer_23d">Dr. Malo</string>
+<string name = "respuesta:correcta23">Dr. Robotnik</string>
+
+<string name = "question_text_24">¿De que material es la primera espada que recibes en The Legend of Zelda </string>
+<string name = "question_answer_24a">Hueso</string>
+<string name = "question_answer_24b">Acero</string>
+<string name = "question_answer_24c">Madera</string>
+<string name = "question_answer_24d">Hierro</string>
+<string name = "respuesta:correcta24">Madera</string>
+
+<string name = "question_text_25">¿Cómo se llama la ciudad en la que se desenvuelve Resident Evil?</string>
+<string name = "question_answer_25a">Metrópolis</string>
+<string name = "question_answer_25b">Raccoon city</string>
+<string name = "question_answer_25c">New York</string>
+<string name = "question_answer_25d">Resident city</string>
+<string name = "respuesta:correcta25">Raccoon city</string>
+
 
 </resources>
