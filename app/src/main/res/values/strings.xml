@@ -10,17 +10,81 @@
     <string name="correct_text">RIGHT!</string>
     <string name="incorrect_text">WRONG!</string>
 
-    <string name="question_text_1">Pensamos demasiado y sentimos muy poco</string>
-    <string name="question_answer_1a">El gran dictador</string>
-    <string name="question_answer_1b">Vida de Perros</string>
-    <string name="question_answer_1c">El gordo y el flaco</string>
-    <string name="question_answer_1d">La clase ociosa</string>
-    <string name="respuesta_correcta1">El gran dictador</string>
-    <string name="question_text_2">Hakuna Matata</string>
-    <string name="question_answer_2a">El Rey León</string>
-    <string name="question_answer_2b">Pinocho</string>
-    <string name="question_answer_2c">Zootopia</string>
-    <string name="question_answer_2d">Cenicienta</string>
-    <string name="respuesta_correcta2">El Rey León</string>
+<!-- Cine-->
+
+<string name = "question_text_1">"Pensamos demasiado y sentimos muy poco"</string>
+<string name = "question_answer_1a">El Gran Dictador</string>
+<string name = "question_answer_1b">Vida de Perros</string>
+<string name = "question_answer_1c">El gordo y el flaco</string>
+<string name = "question_answer_1d">La clase osciosa</string>
+<string name = "respuesta:correcta1">El Gran Dictador</string>
+
+<string name = "question_text_2">Hakuna Matata</string>
+<string name = "question_answer_2a">Pinocho</string>
+<string name = "question_answer_2b">Zootopia</string>
+<string name = "question_answer_2c">El Rey León</string>
+<string name = "question_answer_2d">Cenicienta</string>
+<string name = "respuesta:correcta2">El Rey León</string>
+
+<string name = "question_text_3">Yo soy tu padre</string>
+<string name = "question_answer_3a">Harry Potter</string>
+<string name = "question_answer_3b">El señor de los anillos</string>
+<string name = "question_answer_3c">Star Wars</string>
+<string name = "question_answer_3d">Narnia</string>
+<string name = "respuesta:correcta3">Star Wars</string>
+
+<string name = "question_text_4">Puede que no sea muy listo, pero sé lo que es el amor</string>
+<string name = "question_answer_4a">Forest Gump</string>
+<string name = "question_answer_4b">Milagros inesperados</string>
+<string name = "question_answer_4c">Quisiera ser grande</string>
+<string name = "question_answer_4d">En busca de la felicidad</string>
+<string name = "respuesta:correcta4">Forest Gump</string>
+
+<string name = "question_text_5">Dicen que los mejores brillan con más fuerza en las situaciones más difíciles</string>
+<string name = "question_answer_5a">Mi vecino Totoro</string>
+<string name = "question_answer_5b">Recuerdos del ayer</string>
+<string name = "question_answer_5c">El castillo ambulate</string>
+<string name = "question_answer_5d">Mary y la flor de la bruja</string>
+<string name = "respuesta:correcta5">El castillo ambulate</string>
+
+<!-- Música-->
+
+<string name = "question_text_6">Sonata "Claro de Luna"</string>
+<string name = "question_answer_6a">Bach</string>
+<string name = "question_answer_6b">Beethoven</string>
+<string name = "question_answer_6c">Vivaldi</string>
+<string name = "question_answer_6d">Tchaikovsky</string>
+<string name = "respuesta:correcta6">Beethoven</string>
+
+
+<string name = "question_text_7">Las cuatro estaciones</string>
+<string name = "question_answer_7a">Beethoven</string>
+<string name = "question_answer_7b">Tchaikovsky</string>
+<string name = "question_answer_7c">Vivaldi</string>
+<string name = "question_answer_7d">Bach</string>
+<string name = "respuesta:correcta7">Vivaldi</string>
+
+<string name = "question_text_8">Ballet de Rosamunda</string>
+<string name = "question_answer_8a">Sibelius</string>
+<string name = "question_answer_8b">Beethoven</string>
+<string name = "question_answer_8c">Schubert</string>
+<string name = "question_answer_8d">Vivaldi</string>
+<string name = "respuesta:correcta8">Schubert</string>
+
+<string name = "question_text_9">La flauta mágica – La reina de la noche</string>
+<string name = "question_answer_9a">Paganini</string>
+<string name = "question_answer_9b">Sibelius</string>
+<string name = "question_answer_9c">Tchaikovsky</string>
+<string name = "question_answer_9d">Mozart</string>
+<string name = "respuesta:correcta9">Mozart</string>
+
+<string name = "question_text_10">El destino toca a la puerta</string>
+<string name = "question_answer_10a">Brahms</string>
+<string name = "question_answer_10b">Dvořák</string>
+<string name = "question_answer_10c">Beethoven</string>
+<string name = "question_answer_10d">Grieg</string>
+<string name = "respuesta:correcta10">Beethoven</string>
+    
+    
 
 </resources>
