@@ -126,113 +126,114 @@
 <!-- Deporte-->
 
 <string name = "question_text_11">¿Cuánto vale un tiro de media cancha en basquetbol?</string>
-<string name = "question_answer_11a">3</string>
-<string name = "question_answer_11b">2</string>
-<string name = "question_answer_11c">5</string>
-<string name = "question_answer_11d">1</string>
-<string name = "respuesta:correcta11">3</string>
+<string name = "question_answer_16a">3</string>
+<string name = "question_answer_16b">2</string>
+<string name = "question_answer_16c">5</string>
+<string name = "question_answer_16d">1</string>
+<string name = "respuesta:correcta16">3</string>
 
-<string name = "question_text_12">¿En que año fueron los últimos fuego olímpicos?</string>
-<string name = "question_answer_12a">2000</string>
-<string name = "question_answer_12b">2018</string>
-<string name = "question_answer_12c">2016</string>
-<string name = "question_answer_12d">2004</string>
-<string name = "respuesta:correcta12">2016</string>
+<string name = "question_text_17">¿En que año fueron los últimos fuego olímpicos?</string>
+<string name = "question_answer_17a">2000</string>
+<string name = "question_answer_17b">2018</string>
+<string name = "question_answer_17c">2016</string>
+<string name = "question_answer_17d">2004</string>
+<string name = "respuesta:correcta17">2016</string>
 
-<string name = "question_text_13">¿Qué deporte no se juega en cesped?</string>
-<string name = "question_answer_13a">Baloncesto</string>
-<string name = "question_answer_13b">Futbol Americano</string>
-<string name = "question_answer_13c">Futbol Soccer</string>
-<string name = "question_answer_13d">Rugby</string>
-<string name = "respuesta:correcta13">Baloncesto</string>
+<string name = "question_text_18">¿Qué deporte no se juega en cesped?</string>
+<string name = "question_answer_18a">Baloncesto</string>
+<string name = "question_answer_18b">Futbol Americano</string>
+<string name = "question_answer_18c">Futbol Soccer</string>
+<string name = "question_answer_18d">Rugby</string>
+<string name = "respuesta:correcta18">Baloncesto</string>
 
-<string name = "question_text_14">¿Quién es el único jugador de la historia que ha obtenido 3 veces la Copa del Mundo?</string>
-<string name = "question_answer_14a">Zinedine Zidane</string>
-<string name = "question_answer_14b">Diego Maradona</string>
-<string name = "question_answer_14c">Hugo Sanchez</string>
-<string name = "question_answer_14d">Pelé</string>
-<string name = "respuesta:correcta14">Pelé</string>
+<string name = "question_text_19">¿Quién es el único jugador de la historia que ha obtenido 3 veces la Copa del Mundo?</string>
+<string name = "question_answer_19a">Zinedine Zidane</string>
+<string name = "question_answer_19b">Diego Maradona</string>
+<string name = "question_answer_19c">Hugo Sanchez</string>
+<string name = "question_answer_19d">Pelé</string>
+<string name = "respuesta:correcta19">Pelé</string>
 
-<string name = "question_text_15">¿Es el lugar en donde descansan los jugadores de baseball?</string>
-<string name = "question_answer_15a">Primera Base</string>
-<string name = "question_answer_15b">Gradas</string>
-<string name = "question_answer_15c">Dogout</string>
-<string name = "question_answer_15d">Palco</string>
-<string name = "respuesta:correcta15">Dogout</string>
+<string name = "question_text_20">¿Es el lugar en donde descansan los jugadores de baseball?</string>
+<string name = "question_answer_20a">Primera Base</string>
+<string name = "question_answer_20b">Gradas</string>
+<string name = "question_answer_20c">Dogout</string>
+<string name = "question_answer_20d">Palco</string>
+<string name = "respuesta:correcta20">Dogout</string>
 
 <!-- Arte-->
 
-<string name = "question_text_16">¿Quien es el autor de la mona lisa?</string>
-<string name = "question_answer_16a">Vicent Van Gogh</string>
-<string name = "question_answer_16b">Leonardo Da Vinci</string>
-<string name = "question_answer_16c">Salvador Dalí</string>
-<string name = "question_answer_16d">Miguel Ángel</string>
-<string name = "respuesta:correcta16">Leonardo Da Vinci</string>
+<string name = "question_text_21">¿Quien es el autor de la mona lisa?</string>
+<string name = "question_answer_21a">Vicent Van Gogh</string>
+<string name = "question_answer_21b">Leonardo Da Vinci</string>
+<string name = "question_answer_21c">Salvador Dalí</string>
+<string name = "question_answer_21d">Miguel Ángel</string>
+<string name = "respuesta:correcta21">Leonardo Da Vinci</string>
 
-<string name = "question_text_17">Para Vincent van Gogh también fue muy importante una persona que le brindó apoyo financiero de manera continua y desinteresada, ¿quién fue?</string>
-<string name = "question_answer_17a">Sus padres</string>
-<string name = "question_answer_17b">Su hermano Cornelius</string>
-<string name = "question_answer_17c">Su hermano Theo</string>
-<string name = "question_answer_17d">Un adinerado de Zundert</string>
-<string name = "respuesta:correcta17">Su hermano Theo</string>
+<string name = "question_text_22">Para Vincent van Gogh también fue muy importante una persona que le brindó apoyo financiero de manera continua y desinteresada, ¿quién fue?</string>
+<string name = "question_answer_22a">Sus padres</string>
+<string name = "question_answer_22b">Su hermano Cornelius</string>
+<string name = "question_answer_22c">Su hermano Theo</string>
+<string name = "question_answer_22d">Un adinerado de Zundert</string>
+<string name = "respuesta:correcta22">Su hermano Theo</string>
 
-<string name = "question_text_18">El Juicio Final o El Juicio Universal es un mural realizado al fresco que se encuentra en la Capilla Sixtina y fue pintado por:</string>
-<string name = "question_answer_18a">Pinturicchio</string>
-<string name = "question_answer_18b">Miguel Ángel</string>
-<string name = "question_answer_18c">Pietro Perugino</string>
-<string name = "question_answer_18d">Sandro Botticelli</string>
-<string name = "respuesta:correcta18">Miguel Ángel</string>
+<string name = "question_text_23">El Juicio Final o El Juicio Universal es un mural realizado al fresco que se encuentra en la Capilla Sixtina y fue pintado por:</string>
+<string name = "question_answer_23a">Pinturicchio</string>
+<string name = "question_answer_23b">Miguel Ángel</string>
+<string name = "question_answer_23c">Pietro Perugino</string>
+<string name = "question_answer_23d">Sandro Botticelli</string>
+<string name = "respuesta:correcta23">Miguel Ángel</string>
 
-<string name = "question_text_19">¿Quién es el pintor de Las meninas?</string>
-<string name = "question_answer_19a">Giotto</string>
-<string name = "question_answer_19b">Kandinsky</string>
-<string name = "question_answer_19c">Caravaggio</string>
-<string name = "question_answer_19d">Diego Velázquez</string>
-<string name = "respuesta:correcta19">Diego Velázquez</string>
+<string name = "question_text_24">¿Quién es el pintor de Las meninas?</string>
+<string name = "question_answer_24a">Giotto</string>
+<string name = "question_answer_24b">Kandinsky</string>
+<string name = "question_answer_24c">Caravaggio</string>
+<string name = "question_answer_24d">Diego Velázquez</string>
+<string name = "respuesta:correcta24">Diego Velázquez</string>
 
-<string name = "question_text_20">Hacer arte nunca ha sido sencillo y esta influyente familia del Renacimiento destacó por ser mecenas de importantes artistas y científicos de su época:</string>
-<string name = "question_answer_20a">Médici</string>
-<string name = "question_answer_20b">Gozzolli</string>
-<string name = "question_answer_20c">Alighieri</string>
-<string name = "question_answer_20d">Pitti</string>
-<string name = "respuesta:correcta20">Médici</string>
+<string name = "question_text_25">Hacer arte nunca ha sido sencillo y esta influyente familia del Renacimiento destacó por ser mecenas de importantes artistas y científicos de su época:</string>
+<string name = "question_answer_25a">Médici</string>
+<string name = "question_answer_25b">Gozzolli</string>
+<string name = "question_answer_25c">Alighieri</string>
+<string name = "question_answer_25d">Pitti</string>
+<string name = "respuesta:correcta25">Médici</string>
 
 
 <!-- Videojuegos-->
-<string name = "question_text_21">¿Qué videojuego fue primero?</string>
-<string name = "question_answer_21a">Pong</string>
-<string name = "question_answer_21b">Pac-man</string>
-<string name = "question_answer_21c">Tetris</string>
-<string name = "question_answer_21d">Mario bros</string>
-<string name = "respuesta:correcta21">Pong</string>
+<string name = "question_text_26">¿Qué videojuego fue primero?</string>
+<string name = "question_answer_26a">Pong</string>
+<string name = "question_answer_26b">Pac-man</string>
+<string name = "question_answer_26c">Tetris</string>
+<string name = "question_answer_26d">Mario bros</string>
+<string name = "respuesta:correcta26">Pong</string>
 
-<string name = "question_text_22">¿Cuál es un videojuego de autos de carrera?</string>
-<string name = "question_answer_22a">Snake</string>
-<string name = "question_answer_22b">Frogger</string>
-<string name = "question_answer_22c">R-type</string>
-<string name = "question_answer_22d">Top gear</string>
-<string name = "respuesta:correcta22">Top gear</string>
+<string name = "question_text_27">¿Cuál es un videojuego de autos de carrera?</string>
+<string name = "question_answer_27a">Snake</string>
+<string name = "question_answer_27b">Frogger</string>
+<string name = "question_answer_27c">R-type</string>
+<string name = "question_answer_27d">Top gear</string>
+<string name = "respuesta:correcta27">Top gear</string>
 
-<string name = "question_text_23">¿Cómo se llama el enemigo de Sonic?</string>
-<string name = "question_answer_23a">Robotech</string>
-<string name = "question_answer_23b">Tails</string>
-<string name = "question_answer_23c">Dr. Robotnik</string>
-<string name = "question_answer_23d">Dr. Malo</string>
-<string name = "respuesta:correcta23">Dr. Robotnik</string>
+<string name = "question_text_28">¿Cómo se llama el enemigo de Sonic?</string>
+<string name = "question_answer_28a">Robotech</string>
+<string name = "question_answer_28b">Tails</string>
+<string name = "question_answer_28c">Dr. Robotnik</string>
+<string name = "question_answer_28d">Dr. Malo</string>
+<string name = "respuesta:correcta28">Dr. Robotnik</string>
 
-<string name = "question_text_24">¿De que material es la primera espada que recibes en The Legend of Zelda </string>
-<string name = "question_answer_24a">Hueso</string>
-<string name = "question_answer_24b">Acero</string>
-<string name = "question_answer_24c">Madera</string>
-<string name = "question_answer_24d">Hierro</string>
-<string name = "respuesta:correcta24">Madera</string>
+<string name = "question_text_29">¿De que material es la primera espada que recibes en The Legend of Zelda </string>
+<string name = "question_answer_29a">Hueso</string>
+<string name = "question_answer_29b">Acero</string>
+<string name = "question_answer_29c">Madera</string>
+<string name = "question_answer_29d">Hierro</string>
+<string name = "respuesta:correcta29">Madera</string>
 
-<string name = "question_text_25">¿Cómo se llama la ciudad en la que se desenvuelve Resident Evil?</string>
-<string name = "question_answer_25a">Metrópolis</string>
-<string name = "question_answer_25b">Raccoon city</string>
-<string name = "question_answer_25c">New York</string>
-<string name = "question_answer_25d">Resident city</string>
-<string name = "respuesta:correcta25">Raccoon city</string>
+<string name = "question_text_30">¿Cómo se llama la ciudad en la que se desenvuelve Resident Evil?</string>
+<string name = "question_answer_30a">Metrópolis</string>
+<string name = "question_answer_30b">Raccoon city</string>
+<string name = "question_answer_30c">New York</string>
+<string name = "question_answer_30d">Resident city</string>
+<string name = "respuesta:correcta30">Raccoon city</string>
+
 
 
 </resources>
