@@ -3,6 +3,7 @@ package com.fiuady.quizzappmaster
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 
 class Opciones : AppCompatActivity() {
@@ -179,6 +180,158 @@ class Opciones : AppCompatActivity() {
         }
 
 
+        todoschek.setOnClickListener(View.OnClickListener {
+            if (todoschek.isChecked==true){
+                todoschek.isEnabled = false
+                ciencia_checkbox.isChecked = true
+                cine_checkbox.isChecked = true
+                deporte_checkbox.isChecked = true
+                musica_checkbox.isChecked = true
+                arte_checkbox.isChecked = true
+                videojuegos_checkbox.isChecked = true
+                spinner.setSelection(1)
+            }
+        })
+
+
+        ciencia_checkbox.setOnClickListener(View.OnClickListener {
+            if(ciencia_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+            if (!cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                ciencia_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
+
+        cine_checkbox.setOnClickListener(View.OnClickListener {
+            if(cine_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+            if (!ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                cine_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
+
+        deporte_checkbox.setOnClickListener(View.OnClickListener {
+            if(deporte_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+
+            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                deporte_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
+
+        musica_checkbox.setOnClickListener(View.OnClickListener {
+            if(musica_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+
+            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                musica_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
+        arte_checkbox.setOnClickListener(View.OnClickListener {
+            if(arte_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                arte_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
+        videojuegos_checkbox.setOnClickListener(View.OnClickListener {
+            if(videojuegos_checkbox.isChecked == false){
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+            }
+            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
+                todoschek.isChecked=true
+                todoschek.isEnabled = false
+                spinner.setSelection(1)
+            }
+            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                videojuegos_checkbox.isChecked = true
+            }
+            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
+                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
+                spinner.isEnabled = false
+                spinner.setSelection(0)
+            } else {
+                spinner.isEnabled = true
+            }
+        })
 
         switch.setOnCheckedChangeListener { _, _ ->
             if (switch.isChecked == false) {
