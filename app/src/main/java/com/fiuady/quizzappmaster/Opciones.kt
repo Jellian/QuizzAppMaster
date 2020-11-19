@@ -113,7 +113,7 @@ class Opciones : AppCompatActivity() {
             videojuegos_checkbox.setChecked(true)
         }
 
-        if (boolspistas) {
+        if (!boolspistas) {
             switch.setChecked(true)
         }
 
