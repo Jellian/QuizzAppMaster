@@ -94,10 +94,7 @@ class Juego : AppCompatActivity() {
             }
         }
         nextButton.setOnClickListener { _ ->
-
             gameModel.nextQuestion()
-
-
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -105,14 +102,12 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
-           // botones()
+
 
         }
 
         prevButton.setOnClickListener { _ ->
             gameModel.prevQuestion()
-            //status()
-
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -120,22 +115,10 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
-            //botones()
+
 
         }
     }
-
-//    fun correctanswer(view: View) {
-//        val button = view as Button
-//        Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
-//        button.setBackgroundColor(Color.parseColor("#00FF00"))
-//    }
-//
-//    fun incorrectanswer(view: View) {
-//        val button = view as Button
-//        Toast.makeText(this, R.string.incorrect_text, Toast.LENGTH_SHORT).show()
-//        button.setBackgroundColor(Color.parseColor("#FF0000"))
-//    }
 
     fun status() {
         when (gameModel.currentQuestion.status) {
@@ -225,13 +208,10 @@ class Juego : AppCompatActivity() {
                     opcion1Button.setBackgroundResource(android.R.drawable.btn_default)
                 }
             }
-            else ->{}
+            else -> {
+            }
         }
 
     }
 
-    fun botones() {
-
-
-    }
 }
