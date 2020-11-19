@@ -4,7 +4,23 @@
     <string name="jugar_text">Jugar</string>
     <string name="opciones_text">Opciones</string>
 
-
     <string name="On_text">On</string>
     <string name="Off_text">Off</string>
+
+    <string name="correct_text">RIGHT!</string>
+    <string name="incorrect_text">WRONG!</string>
+
+    <string name="question_text_1">Pensamos demasiado y sentimos muy poco</string>
+    <string name="question_answer_1a">El gran dictador</string>
+    <string name="question_answer_1b">Vida de Perros</string>
+    <string name="question_answer_1c">El gordo y el flaco</string>
+    <string name="question_answer_1d">La clase ociosa</string>
+    <string name="respuesta_correcta1">El gran dictador</string>
+    <string name="question_text_2">Hakuna Matata</string>
+    <string name="question_answer_2a">El Rey León</string>
+    <string name="question_answer_2b">Pinocho</string>
+    <string name="question_answer_2c">Zootopia</string>
+    <string name="question_answer_2d">Cenicienta</string>
+    <string name="respuesta_correcta2">El Rey León</string>
+
 </resources>
