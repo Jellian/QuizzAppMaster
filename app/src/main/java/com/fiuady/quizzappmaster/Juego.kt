@@ -23,25 +23,18 @@ class Juego : AppCompatActivity() {
     private lateinit var opcion3Button: Button
     private lateinit var opcion4Button: Button
     var hints = 1
-
-    // var maxHints = 3
-    //var dificultad = 2
-    var cont = 1
-    val gameModel: GameModel by viewModels()
+    private var cont = 1
+    private val gameModel: GameModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
+
         var game = intent
-        val topicsarray = game.getIntegerArrayListExtra("topicsarray")
+
         val preguntas = game.getIntExtra("intNoQuestions", 5)
         val maxHints = game.getIntExtra("intNopistas", 0)
         val boolpistas = game.getBooleanExtra("boolpistas", false)
         val dificultad = game.getIntExtra("dificultad", 2)
-
-        if (topicsarray != null) {
-            gameModel.random(topicsarray, preguntas)
-        }
-
 
         questionText = findViewById(R.id.question_text)
         prevButton = findViewById(R.id.prev_button)
@@ -167,6 +160,7 @@ class Juego : AppCompatActivity() {
     }
 
     fun status() {
+//        val gameModel: GameModel by viewModels()
         when (gameModel.currentQuestion.status) {
             0 -> {
                 //questionText.setTextColor(Color.parseColor("#000000"))
@@ -262,6 +256,7 @@ class Juego : AppCompatActivity() {
     }
 
     private fun dificultadfun(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
+//        val gameModel: GameModel by viewModels()
         // var buttonArrayAux = arrayListOf<Button>()
         //Este valor hay que mandarlo desde el menu opciones
         //val dificultad = 1
@@ -284,6 +279,7 @@ class Juego : AppCompatActivity() {
     }
 
     private fun cheats(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
+//        val gameModel: GameModel by viewModels()
         // var buttonArrayAux = arrayListOf<Button>()
         if (gameModel.currentQuestion.status == 0 && hints > 0) {
             if (dificultad == 1) {
