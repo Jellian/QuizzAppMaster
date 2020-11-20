@@ -67,9 +67,7 @@ class Opciones : AppCompatActivity() {
             musica_checkbox.isChecked = true
             arte_checkbox.isChecked = true
             videojuegos_checkbox.isChecked = true
-            todoschek.isEnabled = true
-        }
-
+          
         if (!switch.isChecked()) {
             spinnerpistas.setEnabled(false)
         }
