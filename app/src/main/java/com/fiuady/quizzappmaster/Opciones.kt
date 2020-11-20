@@ -68,11 +68,13 @@ class Opciones : AppCompatActivity() {
             arte_checkbox.isChecked = true
             videojuegos_checkbox.isChecked = true
         }
-
             if (!switch.isChecked()) {
                 spinnerpistas.setEnabled(false)
             }
 
+            if (!switch.isChecked()) {
+                spinnerpistas.setEnabled(false)
+            }
 
             if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
                     !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
@@ -82,6 +84,7 @@ class Opciones : AppCompatActivity() {
             } else {
                 spinner.isEnabled = true
             }
+
 
             cine_checkbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
@@ -232,20 +235,27 @@ class Opciones : AppCompatActivity() {
             if (bajo.isChecked) dificultad = 1
         }
 
-        override fun onBackPressed() {
-            flagenvio = true
-            selectdificulty()
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("topicsarray", topicsarray)
-            intent.putExtra("intNoQuestions", spinner.getSelectedItem().toString().toInt());
-            intent.putExtra("intNopistas", spinnerpistas.getSelectedItem().toString().toInt());
-            intent.putExtra("dificultad", dificultad)
-            intent.putExtra("intspinpistas", switch.isChecked)
-//        intent.putExtra("flagop", flagenvio)
-            startActivity(intent)
 
+  
 
-        }
-
+    fun selectdificulty() {
+        if (Alto.isChecked) dificultad = 3
+        if (medio.isChecked) dificultad = 2
+        if (bajo.isChecked) dificultad = 1
     }
+
+    override fun onBackPressed() {
+        flagenvio = true
+        selectdificulty()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("topicsarray", topicsarray)
+        intent.putExtra("intNoQuestions", spinner.getSelectedItem().toString().toInt());
+        intent.putExtra("intNopistas", spinnerpistas.getSelectedItem().toString().toInt());
+        intent.putExtra("dificultad", dificultad)
+        intent.putExtra("intspinpistas", switch.isChecked)
+        startActivity(intent)
+    }
+
+}
+
 
