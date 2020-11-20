@@ -9,59 +9,61 @@
     tools:context=".Juego">
 
     <LinearLayout
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="3dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/pregunta_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
+
             android:text="Preguntas"
-            android:textSize="22sp"
-            android:textColorHint="#7A8089"/>
+            android:textColorHint="#7A8089"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/pregunta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:layout_marginLeft="50dp"
-            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:text="1/10"
             android:textColorHint="#7A8089"
-            android:textSize="22sp"
-            android:layout_marginRight="50dp" />
-
-         <TextView
+            android:textSize="12sp"
+            />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <TextView
             android:id="@+id/Puntos_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_marginEnd="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="1dp"
+
             android:gravity="center"
             android:text="Puntos"
-            android:textSize="22sp" />
+            android:textSize="12sp" />
         <TextView
-
             android:id="@+id/pistas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="0/3"
             android:textColorHint="#7A8089"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="50dp"
-            android:textSize="20sp" />
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="1dp"
+            android:textSize="12sp" />
+
     </LinearLayout>
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-
     <TextView
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
@@ -69,7 +71,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:textSize="28sp"
+        android:textSize="15sp"
         tools:text="question_text1" />
     <Space
         android:layout_width="match_parent"
@@ -95,63 +97,66 @@
             android:layout_height="50dp"
             android:layout_marginLeft="100dp"
             android:background="@drawable/icons2"/>
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:orientation="vertical">
 
+
         <Button
             android:id="@+id/opcion1_button"
-            android:layout_width="297dp"
+            android:layout_width="match_parent"
             android:textAllCaps="false"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="3dp"
+            android:padding="3dp"
             android:text="answer"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/opcion2_button"
             android:layout_width="match_parent"
             android:textAllCaps="false"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="3dp"
+            android:padding="3dp"
             android:text="answer"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/opcion3_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="3dp"
+            android:padding="3dp"
             android:textAllCaps="false"
             android:text="answer"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/opcion4_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
+            android:layout_margin="3dp"
+            android:padding="3dp"
             android:textAllCaps="false"
             android:text="answer"
             android:textColor="@color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:textSize="12sp" />
 
+
+    </LinearLayout>
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2" />
+
+
 </LinearLayout>

@@ -67,11 +67,14 @@ class Opciones : AppCompatActivity() {
             musica_checkbox.isChecked = true
             arte_checkbox.isChecked = true
             videojuegos_checkbox.isChecked = true
-
+        }
             if (!switch.isChecked()) {
                 spinnerpistas.setEnabled(false)
             }
 
+            if (!switch.isChecked()) {
+                spinnerpistas.setEnabled(false)
+            }
 
             if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
                     !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
@@ -81,6 +84,7 @@ class Opciones : AppCompatActivity() {
             } else {
                 spinner.isEnabled = true
             }
+
 
             cine_checkbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
@@ -183,48 +187,56 @@ class Opciones : AppCompatActivity() {
                 }
             }
         }
-    }
 
-    fun validar() {
-        when (cont) {
-            1 -> {
-                spinadp()
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-                spinner.setSelection(0)
-                spinner.isEnabled = false
-            }
-            in 2..5 -> {
-                spinadp()
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-                spinner.setSelection(0)
-                spinner.isEnabled = true
-            }
-            6 -> {
-                spinadp()
-                todoschek.isChecked = true
-                todoschek.isEnabled = false
-                spinner.setSelection(0)
-                spinner.isEnabled = true
+        fun validar() {
+            when (cont) {
+                1 -> {
+                    spinadp()
+                    todoschek.isEnabled = true
+                    todoschek.isChecked = false
+                    spinner.setSelection(0)
+                    spinner.isEnabled = false
+                }
+                in 2..5 -> {
+                    spinadp()
+                    todoschek.isEnabled = true
+                    todoschek.isChecked = false
+                    spinner.setSelection(0)
+                    spinner.isEnabled = true
+                }
+                6 -> {
+                    spinadp()
+                    todoschek.isChecked = true
+                    todoschek.isEnabled = false
+                    spinner.setSelection(0)
+                    spinner.isEnabled = true
+                }
             }
         }
-    }
 
-    fun spinadp() {
-        if (cont < 6) {
-            val num_pre = arrayOf(5, 6, 7, 8, 9, 10)
-            adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pre)
-            spinner.setAdapter(adapterQuestions)
+        fun spinadp() {
+            if (cont < 6) {
+                val num_pre = arrayOf(5, 6, 7, 8, 9, 10)
+                adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pre)
+                spinner.setAdapter(adapterQuestions)
+            }
+
+            if (cont == 6) {
+                val preg = arrayListOf<Int>(6, 7, 8, 9, 10)
+                adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, preg)
+                spinner.setAdapter(adapterQuestions)
+            }
+
         }
 
-        if (cont == 6) {
-            val preg = arrayListOf<Int>(6, 7, 8, 9, 10)
-            adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, preg)
-            spinner.setAdapter(adapterQuestions)
+        fun selectdificulty() {
+            if (Alto.isChecked) dificultad = 3
+            if (medio.isChecked) dificultad = 2
+            if (bajo.isChecked) dificultad = 1
         }
 
-    }
+
+  
 
     fun selectdificulty() {
         if (Alto.isChecked) dificultad = 3
@@ -242,9 +254,8 @@ class Opciones : AppCompatActivity() {
         intent.putExtra("dificultad", dificultad)
         intent.putExtra("intspinpistas", switch.isChecked)
         startActivity(intent)
-
-
     }
+
 }
 
 
