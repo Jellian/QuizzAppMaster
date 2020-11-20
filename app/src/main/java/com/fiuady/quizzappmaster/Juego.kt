@@ -12,21 +12,27 @@ import androidx.activity.viewModels
 
 class Juego : AppCompatActivity() {
 
+
     private lateinit var questionText: TextView
     private lateinit var pregunta: TextView
+    private lateinit var pistas: TextView
     private lateinit var prevButton: ImageButton
     private lateinit var nextButton: ImageButton
     private lateinit var opcion1Button: Button
     private lateinit var opcion2Button: Button
     private lateinit var opcion3Button: Button
     private lateinit var opcion4Button: Button
-
+    var hints = 1
+    var maxHints = 3
+    var dificultad = 2
+    var cont = 1
     val gameModel: GameModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
 
         gameModel.random()
+
         questionText = findViewById(R.id.question_text)
         prevButton = findViewById(R.id.prev_button)
         nextButton = findViewById(R.id.next_button)
@@ -34,14 +40,20 @@ class Juego : AppCompatActivity() {
         opcion2Button = findViewById(R.id.opcion2_button)
         opcion3Button = findViewById(R.id.opcion3_button)
         opcion4Button = findViewById(R.id.opcion4_button)
+        pistas = findViewById(R.id.pistas)
         pregunta = findViewById(R.id.pregunta)
         questionText.setText(gameModel.currentQuestion.questionText)
         opcion1Button.setText(gameModel.currentQuestion.answer1)
         opcion2Button.setText(gameModel.currentQuestion.answer2)
         opcion3Button.setText(gameModel.currentQuestion.answer3)
         opcion4Button.setText(gameModel.currentQuestion.answer4)
-        opcion1Button.setOnClickListener { _ ->
 
+        pistas.setText("${hints-1}/${maxHints}")
+        val buttonArray = arrayListOf<Button>(opcion1Button, opcion2Button, opcion3Button, opcion4Button)
+        var buttonArrayAux = arrayListOf<Button>()
+        dificultad(buttonArray, buttonArrayAux)
+
+        opcion1Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion1Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
                 gameModel.currentQuestion.status = 1
@@ -54,6 +66,7 @@ class Juego : AppCompatActivity() {
                 status()
             }
         }
+
         opcion2Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion2Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
@@ -67,6 +80,7 @@ class Juego : AppCompatActivity() {
                 status()
             }
         }
+
         opcion3Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion3Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
@@ -80,6 +94,7 @@ class Juego : AppCompatActivity() {
                 status()
             }
         }
+
         opcion4Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion4Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
@@ -93,8 +108,11 @@ class Juego : AppCompatActivity() {
                 status()
             }
         }
+
         nextButton.setOnClickListener { _ ->
             gameModel.nextQuestion()
+            buttonArrayAux.clear()
+            cont = 1
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -102,12 +120,13 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
-
-
+            dificultad(buttonArray, buttonArrayAux)
         }
 
         prevButton.setOnClickListener { _ ->
             gameModel.prevQuestion()
+            buttonArrayAux.clear()
+            cont=1
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -115,7 +134,20 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
+            dificultad(buttonArray, buttonArrayAux)
+        }
 
+        questionText.setOnClickListener {
+
+            //gameModel.currentQuestion.cheated=true
+            if (hints <= maxHints) {
+                //pistas.text = ("${hints}/${maxHints}")
+                hints++
+                Toast.makeText(this, if (hints == maxHints) R.string.no_more_hints else R.string.cheater, Toast.LENGTH_SHORT).show()
+                cheats(buttonArray, buttonArrayAux)
+                //dificultad(buttonArray)
+                pistas.text = ("${hints-1}/${maxHints}")
+            }
 
         }
     }
@@ -124,10 +156,11 @@ class Juego : AppCompatActivity() {
         when (gameModel.currentQuestion.status) {
             0 -> {
                 //questionText.setTextColor(Color.parseColor("#000000"))
-                opcion1Button.isEnabled = true
-                opcion2Button.isEnabled = true
-                opcion3Button.isEnabled = true
-                opcion4Button.isEnabled = true
+//                opcion1Button.isEnabled = true
+//                opcion2Button.isEnabled = true
+//                opcion3Button.isEnabled = true
+//                opcion4Button.isEnabled = true
+                //dificultad()
             }
             1 -> {
                 // questionText.setTextColor(Color.parseColor("#00FF00"))
@@ -214,4 +247,54 @@ class Juego : AppCompatActivity() {
 
     }
 
+    private fun dificultad(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>) {
+        // var buttonArrayAux = arrayListOf<Button>()
+        //Este valor hay que mandarlo desde el menu opciones
+        //val dificultad = 1
+        //var contador = 0
+        if (gameModel.currentQuestion.status == 0) {
+
+            for (i in 0 until buttonArray.size) {
+                if (buttonArray[i].text == getText(gameModel.currentQuestion.answer)) {
+                    buttonArray[i].isEnabled = true
+                } else buttonArrayAux.add(buttonArray[i])
+            }
+            buttonArrayAux[0].isEnabled = false
+            buttonArrayAux[1].isEnabled = false
+            buttonArrayAux[2].isEnabled = false
+            for (j in 0 until dificultad) {
+                buttonArrayAux[j].isEnabled = true
+            }
+
+        }
+    }
+
+    private fun cheats(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>) {
+        // var buttonArrayAux = arrayListOf<Button>()
+        if (gameModel.currentQuestion.status == 0 && hints > 0) {
+            if (dificultad == 1) {
+                for (i in 0 until buttonArray.size) {
+                    if (buttonArray[i].text == getText(gameModel.currentQuestion.answer)) {
+                        gameModel.currentQuestion.respuesta = i + 1
+                    }
+                    gameModel.currentQuestion.status = 1
+                    status()
+                }
+            } else if (dificultad > 1) {
+                for (i in 0 until buttonArray.size) {
+                    if (buttonArray[i].text == getText(gameModel.currentQuestion.answer)) {
+                        buttonArray[i].isEnabled = true
+                    } else buttonArrayAux.add(buttonArray[i])
+                }
+                buttonArrayAux[0].isEnabled = false
+                buttonArrayAux[1].isEnabled = false
+                buttonArrayAux[2].isEnabled = false
+                for (j in 0 until (dificultad - cont)) {
+                    buttonArrayAux[j].isEnabled = true
+                }
+                cont++
+            }
+
+        }
+    }
 }
