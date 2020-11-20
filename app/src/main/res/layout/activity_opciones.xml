@@ -58,7 +58,7 @@
                 android:id="@+id/todos_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/todos"
+                android:text="Todos"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
 
@@ -189,7 +189,7 @@
             android:id="@+id/spinner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/n_preguntas"
+            android:text="n_preguntas"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
@@ -245,7 +245,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/habilitar_pistas"
+            android:text="habilitar_pistas"
             />
     <LinearLayout
         android:layout_width="wrap_content"

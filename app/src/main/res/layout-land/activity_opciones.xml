@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="241, 239, 240"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Opciones">
 
     <Space
         android:layout_width="wrap_content"
@@ -56,7 +57,8 @@
                 android:id="@+id/todos_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/todos"
+                android:text="Todos"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
 
@@ -177,7 +179,7 @@
             android:id="@+id/spinner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/n_preguntas"
+            android:text="n_preguntas"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
@@ -208,12 +210,10 @@
 
     <Switch
         android:id="@+id/pistas"
-        android:textOn="@string/On_text"
-        android:textOff="@string/Off_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/habilitar_pistas"
+        android:text="habilitar_pistas"
         />
 
     <Space
@@ -226,16 +226,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-           android:layout_gravity="center"
-            >
+           android:layout_gravity="center">
 
-
-                <RadioButton
-                    android:checked="true"
-                    android:id="@+id/nivel_alto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel Alto"/>
+            <RadioButton
+                android:checked="true"
+                android:id="@+id/nivel_alto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nivel Alto"/>
 
 
             <RadioButton

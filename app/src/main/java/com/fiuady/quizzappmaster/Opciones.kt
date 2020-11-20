@@ -22,7 +22,6 @@ class Opciones : AppCompatActivity() {
     private lateinit var Alto: RadioButton
     private lateinit var medio: RadioButton
     private lateinit var bajo: RadioButton
-    private lateinit var prueba: TextView
     private var flagenvio = false
     var cont = 1
     private val temascheckboxes = mutableListOf<CheckBox>()
@@ -51,7 +50,7 @@ class Opciones : AppCompatActivity() {
         Alto = findViewById(R.id.nivel_alto)
         medio = findViewById(R.id.nivel_medio)
         bajo = findViewById(R.id.nivel_bajo)
-        prueba = findViewById(R.id.prueba)
+
 
         //spinadp()
         medio.isChecked = true
@@ -152,7 +151,6 @@ class Opciones : AppCompatActivity() {
             }
             videojuegos_checkbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
-                    prueba.text = topicsarray[0].toString()
                     cont += 1
                     if (!topicsarray.contains(6)) topicsarray.add(6)
                 } else if (cont == 1) {
@@ -234,15 +232,6 @@ class Opciones : AppCompatActivity() {
             if (medio.isChecked) dificultad = 2
             if (bajo.isChecked) dificultad = 1
         }
-
-
-  
-
-    fun selectdificulty() {
-        if (Alto.isChecked) dificultad = 3
-        if (medio.isChecked) dificultad = 2
-        if (bajo.isChecked) dificultad = 1
-    }
 
     override fun onBackPressed() {
         flagenvio = true
