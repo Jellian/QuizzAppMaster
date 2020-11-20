@@ -23,15 +23,25 @@ class Juego : AppCompatActivity() {
     private lateinit var opcion3Button: Button
     private lateinit var opcion4Button: Button
     var hints = 1
-    var maxHints = 3
-    var dificultad = 2
+
+    // var maxHints = 3
+    //var dificultad = 2
     var cont = 1
     val gameModel: GameModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
+        var game = intent
+        val topicsarray = game.getIntegerArrayListExtra("topicsarray")
+        val preguntas = game.getIntExtra("intNoQuestions", 5)
+        val maxHints = game.getIntExtra("intNopistas", 0)
+        val boolpistas = game.getBooleanExtra("boolpistas", false)
+        val dificultad = game.getIntExtra("dificultad", 2)
 
-        gameModel.random()
+        if (topicsarray != null) {
+            gameModel.random(topicsarray, preguntas)
+        }
+
 
         questionText = findViewById(R.id.question_text)
         prevButton = findViewById(R.id.prev_button)
@@ -47,11 +57,14 @@ class Juego : AppCompatActivity() {
         opcion2Button.setText(gameModel.currentQuestion.answer2)
         opcion3Button.setText(gameModel.currentQuestion.answer3)
         opcion4Button.setText(gameModel.currentQuestion.answer4)
-
-        pistas.setText("${hints-1}/${maxHints}")
         val buttonArray = arrayListOf<Button>(opcion1Button, opcion2Button, opcion3Button, opcion4Button)
-        var buttonArrayAux = arrayListOf<Button>()
-        dificultad(buttonArray, buttonArrayAux)
+        val buttonArrayAux = arrayListOf<Button>()
+        if (boolpistas) {
+            pistas.setText("${hints - 1}/${maxHints}")
+        } else pistas.setText("")
+       pregunta.setText("${1}/${preguntas}")
+        //pregunta.setText("${gameModel.currentQuestion}/${preguntas}")
+        dificultadfun(buttonArray, buttonArrayAux, dificultad)
 
         opcion1Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion1Button.text) {
@@ -120,13 +133,13 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
-            dificultad(buttonArray, buttonArrayAux)
+            dificultadfun(buttonArray, buttonArrayAux, dificultad)
         }
 
         prevButton.setOnClickListener { _ ->
             gameModel.prevQuestion()
             buttonArrayAux.clear()
-            cont=1
+            cont = 1
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -134,21 +147,22 @@ class Juego : AppCompatActivity() {
             opcion3Button.setText(gameModel.currentQuestion.answer3)
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
-            dificultad(buttonArray, buttonArrayAux)
+            dificultadfun(buttonArray, buttonArrayAux, dificultad)
         }
 
         questionText.setOnClickListener {
 
-            //gameModel.currentQuestion.cheated=true
-            if (hints <= maxHints) {
-                //pistas.text = ("${hints}/${maxHints}")
-                hints++
-                Toast.makeText(this, if (hints == maxHints) R.string.no_more_hints else R.string.cheater, Toast.LENGTH_SHORT).show()
-                cheats(buttonArray, buttonArrayAux)
-                //dificultad(buttonArray)
-                pistas.text = ("${hints-1}/${maxHints}")
+            if (!boolpistas) {
+            } else {
+                if (hints <= maxHints) {
+                    //pistas.text = ("${hints}/${maxHints}")
+                    hints++
+                    Toast.makeText(this, if (hints == maxHints) R.string.no_more_hints else R.string.cheater, Toast.LENGTH_SHORT).show()
+                    cheats(buttonArray, buttonArrayAux, dificultad)
+                    //dificultad(buttonArray)
+                    pistas.text = ("${hints - 1}/${maxHints}")
+                }
             }
-
         }
     }
 
@@ -247,7 +261,7 @@ class Juego : AppCompatActivity() {
 
     }
 
-    private fun dificultad(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>) {
+    private fun dificultadfun(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
         // var buttonArrayAux = arrayListOf<Button>()
         //Este valor hay que mandarlo desde el menu opciones
         //val dificultad = 1
@@ -269,7 +283,7 @@ class Juego : AppCompatActivity() {
         }
     }
 
-    private fun cheats(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>) {
+    private fun cheats(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
         // var buttonArrayAux = arrayListOf<Button>()
         if (gameModel.currentQuestion.status == 0 && hints > 0) {
             if (dificultad == 1) {

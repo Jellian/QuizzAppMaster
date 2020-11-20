@@ -3,6 +3,7 @@ package com.fiuady.quizzappmaster
 import androidx.lifecycle.ViewModel
 
 
+
 class GameModel : ViewModel() {
 
     private val questionArrays = arrayListOf<Question>(
@@ -51,14 +52,14 @@ class GameModel : ViewModel() {
     )
 
     var currentQuestionIndex = 0
-    private val topicsarray = arrayListOf<Int>(1,3)
+   // private val topicsarray = arrayListOf<Int>(1,3)
     private val questionRandomAux = arrayListOf<Question>()
     private val questionaux = arrayListOf<Question>()
     private val answeraux = arrayListOf<Int>()
-    private val numQuestions =10
+   // private val numQuestions =5
 
-
-fun random() {
+    //topicsarray : ArrayList<Int>
+fun random(topicsarray : ArrayList<Int>, numQuestions : Int) {
     val size = topicsarray.size
     var arrayposition = 0
 // Por cada topico en el topicsarray guardo las preguntas de los topicos seleccionados en questionaux

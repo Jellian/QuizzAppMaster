@@ -8,29 +8,29 @@ import android.widget.*
 
 class Opciones : AppCompatActivity() {
 
-    private lateinit var todoschek:CheckBox
-    private lateinit var ciencia_checkbox:CheckBox
-    private lateinit var cine_checkbox:CheckBox
-    private lateinit var deporte_checkbox:CheckBox
-    private lateinit var musica_checkbox:CheckBox
-    private lateinit var arte_checkbox:CheckBox
-    private lateinit var videojuegos_checkbox:CheckBox
-    private lateinit var spinner:Spinner
-    private lateinit var spinnerpistas:Spinner
+    private lateinit var todoschek: CheckBox
+    private lateinit var ciencia_checkbox: CheckBox
+    private lateinit var cine_checkbox: CheckBox
+    private lateinit var deporte_checkbox: CheckBox
+    private lateinit var musica_checkbox: CheckBox
+    private lateinit var arte_checkbox: CheckBox
+    private lateinit var videojuegos_checkbox: CheckBox
+    private lateinit var spinner: Spinner
+    private lateinit var spinnerpistas: Spinner
     var radioGroup: RadioGroup? = null
     private lateinit var switch: Switch
     private lateinit var Alto: RadioButton
     private lateinit var medio: RadioButton
     private lateinit var bajo: RadioButton
+    private lateinit var prueba: TextView
     private var flagenvio = false
-
+    var cont = 1
     private val temascheckboxes = mutableListOf<CheckBox>()
-
-    val num_pre= arrayOf(5, 6, 7, 8, 9, 10)
-    val num_pistas= arrayOf(1, 2, 3)
+    var topicsarray = arrayListOf<Int>(1)
+    val num_pistas = arrayOf(1, 2, 3)
     var adapterQuestions: ArrayAdapter<Int>? = null
     var adapterpistas: ArrayAdapter<Int>? = null
-    var count=0
+    var dificultad = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,15 +51,14 @@ class Opciones : AppCompatActivity() {
         Alto = findViewById(R.id.nivel_alto)
         medio = findViewById(R.id.nivel_medio)
         bajo = findViewById(R.id.nivel_bajo)
+        prueba = findViewById(R.id.prueba)
 
-
-        adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pre)
-        spinner.setAdapter(adapterQuestions)
-
+        //spinadp()
+        medio.isChecked = true
         adapterpistas = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pistas)
         spinnerpistas.setAdapter(adapterpistas)
         spinnerpistas.isEnabled = false
-
+        cine_checkbox.isChecked = true
 
         if (todoschek.isChecked == true) {
             ciencia_checkbox.isChecked = true
@@ -68,105 +67,11 @@ class Opciones : AppCompatActivity() {
             musica_checkbox.isChecked = true
             arte_checkbox.isChecked = true
             videojuegos_checkbox.isChecked = true
-            todoschek.isEnabled=true
-        }
-
-        val booltodos = intent.getBooleanExtra("intTodos", false)
-        val boolciencia = intent.getBooleanExtra("intciencia", true)
-        val boolcine = intent.getBooleanExtra("intcine", false)
-        val booldeporte = intent.getBooleanExtra("intdeporte", false)
-        val boolmusica = intent.getBooleanExtra("intmusica", false)
-        val boolarte = intent.getBooleanExtra("intarte", false)
-        val boolvideojuegos = intent.getBooleanExtra("intvideojuegos", false)
-        val stringNopreguntas = intent.getIntExtra("intNoQuestions", 0)
-        val stringNoCpistas = intent.getIntExtra("intNopistas", 0)
-        val boolbajo = intent.getBooleanExtra("intbajo", false)
-        val boolmedio = intent.getBooleanExtra("intMedio", false)
-        val boolalto = intent.getBooleanExtra("intAlto", true)
-        val boolspistas = intent.getBooleanExtra("intspinpistas", false)
-
-        if(booltodos) {
-            todoschek.setChecked(true)
-            ciencia_checkbox.setChecked(true)
-            musica_checkbox.setChecked(true)
-            arte_checkbox.setChecked(true)
-            deporte_checkbox.setChecked(true)
-            cine_checkbox.setChecked(true)
-            videojuegos_checkbox.setChecked(true)
-        }
-        if ( boolciencia) {
-            ciencia_checkbox.setChecked(true)
-        }
-        if (boolcine) {
-            ciencia_checkbox.setChecked(true)
-        }
-        if (booldeporte) {
-            deporte_checkbox.setChecked(true)
-        }
-        if (boolmusica) {
-            musica_checkbox.setChecked(true)
-        }
-        if (boolarte) {
-            arte_checkbox.setChecked(true)
-        }
-        if (boolvideojuegos) {
-            videojuegos_checkbox.setChecked(true)
-        }
-
-        if (boolspistas) {
-            switch.setChecked(true)
+            todoschek.isEnabled = true
         }
 
         if (!switch.isChecked()) {
             spinnerpistas.setEnabled(false)
-        }
-
-        if (stringNopreguntas == 5) {
-            spinner.setSelection(0)
-        }
-
-        if (stringNopreguntas == 6) {
-            spinner.setSelection(1)
-        }
-
-        if (stringNopreguntas == 7) {
-            spinner.setSelection(2)
-        }
-
-        if (stringNopreguntas == 8) {
-            spinner.setSelection(3)
-        }
-
-        if (stringNopreguntas == 9) {
-            spinner.setSelection(4)
-        }
-
-        if (stringNopreguntas == 10) {
-            spinner.setSelection(5)
-        }
-
-        if (stringNoCpistas == 1) {
-            spinnerpistas.setSelection(0)
-        }
-
-        if (stringNoCpistas == 2) {
-            spinnerpistas.setSelection(1)
-        }
-
-        if (stringNoCpistas == 3) {
-            spinnerpistas.setSelection(2)
-        }
-
-        if (boolbajo) {
-            bajo.setChecked(true)
-        }
-
-        if (boolmedio) {
-            medio.setChecked(true)
-        }
-
-        if (boolalto) {
-            Alto.setChecked(true)
         }
 
 
@@ -179,9 +84,87 @@ class Opciones : AppCompatActivity() {
             spinner.isEnabled = true
         }
 
+        cine_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                cont += 1
+                if (!topicsarray.contains(1)) topicsarray.add(1)
 
-        todoschek.setOnClickListener(View.OnClickListener {
-            if (todoschek.isChecked==true){
+            } else if (cont == 1) {
+                cine_checkbox.isChecked = true
+
+            } else {
+                cont -= 1
+                topicsarray.remove(1)
+
+            }
+            validar()
+        }
+
+        ciencia_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                cont += 1
+                if (!topicsarray.contains(3)) topicsarray.add(3)
+            } else if (cont == 1) {
+                ciencia_checkbox.isChecked = true
+            } else {
+                cont -= 1
+                topicsarray.remove(3)
+            }
+            validar()
+        }
+        deporte_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                cont += 1
+                if (!topicsarray.contains(4)) topicsarray.add(4)
+            } else if (cont == 1) {
+                deporte_checkbox.isChecked = true
+            } else {
+                cont -= 1
+                topicsarray.remove(4)
+            }
+            validar()
+        }
+        arte_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                cont += 1
+                if (!topicsarray.contains(5)) topicsarray.add(5)
+            } else if (cont == 1) {
+                arte_checkbox.isChecked = true
+            } else {
+                cont -= 1
+                topicsarray.remove(5)
+            }
+            validar()
+        }
+        musica_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                cont += 1
+                if (!topicsarray.contains(2)) topicsarray.add(2)
+            } else if (cont == 1) {
+                musica_checkbox.isChecked = true
+            } else {
+                cont -= 1
+                topicsarray.remove(2)
+            }
+            validar()
+        }
+        videojuegos_checkbox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                prueba.text = topicsarray[0].toString()
+                cont += 1
+                if (!topicsarray.contains(6)) topicsarray.add(6)
+            } else if (cont == 1) {
+                videojuegos_checkbox.isChecked = true
+            } else {
+                cont -= 1
+                topicsarray.remove(6)
+            }
+            validar()
+        }
+
+
+        todoschek.setOnClickListener {
+            if (todoschek.isChecked == true) {
                 todoschek.isEnabled = false
                 ciencia_checkbox.isChecked = true
                 cine_checkbox.isChecked = true
@@ -191,185 +174,76 @@ class Opciones : AppCompatActivity() {
                 videojuegos_checkbox.isChecked = true
                 spinner.setSelection(1)
             }
-        })
-
-
-        ciencia_checkbox.setOnClickListener(View.OnClickListener {
-            if(ciencia_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-            if (!cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                ciencia_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
-
-        cine_checkbox.setOnClickListener(View.OnClickListener {
-            if(cine_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-            if (!ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                cine_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
-
-        deporte_checkbox.setOnClickListener(View.OnClickListener {
-            if(deporte_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-
-            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !musica_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                deporte_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
-
-        musica_checkbox.setOnClickListener(View.OnClickListener {
-            if(musica_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-
-            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                musica_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
-        arte_checkbox.setOnClickListener(View.OnClickListener {
-            if(arte_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                arte_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
-        videojuegos_checkbox.setOnClickListener(View.OnClickListener {
-            if(videojuegos_checkbox.isChecked == false){
-                todoschek.isEnabled = true
-                todoschek.isChecked = false
-            }
-            if(cine_checkbox.isChecked&&ciencia_checkbox.isChecked&&deporte_checkbox.isChecked&&musica_checkbox.isChecked&&arte_checkbox.isChecked&&videojuegos_checkbox.isChecked){
-                todoschek.isChecked=true
-                todoschek.isEnabled = false
-                spinner.setSelection(1)
-            }
-            if (!ciencia_checkbox.isChecked && !cine_checkbox.isChecked && !deporte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                videojuegos_checkbox.isChecked = true
-            }
-            if (!cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && videojuegos_checkbox.isChecked || cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && deporte_checkbox.isChecked && !arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked ||
-                    !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && arte_checkbox.isChecked && !musica_checkbox.isChecked && !videojuegos_checkbox.isChecked || !cine_checkbox.isChecked && !ciencia_checkbox.isChecked && !deporte_checkbox.isChecked && !arte_checkbox.isChecked && musica_checkbox.isChecked && !videojuegos_checkbox.isChecked) {
-                spinner.isEnabled = false
-                spinner.setSelection(0)
-            } else {
-                spinner.isEnabled = true
-            }
-        })
+        }
 
         switch.setOnCheckedChangeListener { _, _ ->
-            if (switch.isChecked == false) {
+            if (!switch.isChecked) {
                 spinnerpistas.isEnabled = false
             }
             if (switch.isChecked) {
                 spinnerpistas.isEnabled = true
             }
+        }
+    }
 
+    fun validar() {
+        when (cont) {
+            1 -> {
+                spinadp()
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+                spinner.setSelection(0)
+                spinner.isEnabled = false
+            }
+            in 2..5 -> {
+                spinadp()
+                todoschek.isEnabled = true
+                todoschek.isChecked = false
+                spinner.setSelection(0)
+                spinner.isEnabled = true
+            }
+            6 -> {
+                spinadp()
+                todoschek.isChecked = true
+                todoschek.isEnabled = false
+                spinner.setSelection(0)
+                spinner.isEnabled = true
+            }
+        }
+    }
 
+    fun spinadp() {
+        if (cont < 6) {
+            val num_pre = arrayOf(5, 6, 7, 8, 9, 10)
+            adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pre)
+            spinner.setAdapter(adapterQuestions)
         }
 
+        if (cont == 6) {
+            val preg = arrayListOf<Int>(6, 7, 8, 9, 10)
+            adapterQuestions = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, preg)
+            spinner.setAdapter(adapterQuestions)
+        }
 
     }
 
+    fun selectdificulty() {
+        if (Alto.isChecked) dificultad = 3
+        if (medio.isChecked) dificultad = 2
+        if (bajo.isChecked) dificultad = 1
+    }
 
     override fun onBackPressed() {
         flagenvio = true
-        val intent = Intent(this@Opciones, MainActivity::class.java)
-
-        intent.putExtra("intTodos", todoschek.isChecked())
-        intent.putExtra("intciencia", ciencia_checkbox.isChecked())
-        intent.putExtra("intcine", cine_checkbox.isChecked() )
-        intent.putExtra("intdeporte", deporte_checkbox.isChecked())
-        intent.putExtra("intmusica", musica_checkbox.isChecked())
-        intent.putExtra("intarte", arte_checkbox.isChecked())
-        intent.putExtra("intvideojuegos", videojuegos_checkbox.isChecked())
+        selectdificulty()
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("topicsarray", topicsarray)
         intent.putExtra("intNoQuestions", spinner.getSelectedItem().toString().toInt());
         intent.putExtra("intNopistas", spinnerpistas.getSelectedItem().toString().toInt());
-        intent.putExtra("intbajo", bajo.isChecked())
-        intent.putExtra("intMedio", medio.isChecked())
-        intent.putExtra("intAlto", Alto.isChecked())
-        intent.putExtra("intspinpistas", switch.isChecked())
-        intent.putExtra("flagop", flagenvio)
+        intent.putExtra("dificultad", dificultad)
+        intent.putExtra("intspinpistas", switch.isChecked)
+//        intent.putExtra("flagop", flagenvio)
         startActivity(intent)
-
-
-
 
 
     }
