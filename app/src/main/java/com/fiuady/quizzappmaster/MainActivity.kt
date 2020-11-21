@@ -10,7 +10,7 @@ import androidx.activity.viewModels
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        var topico = arrayListOf<Int>()
+        var topico = arrayListOf<Int>(1)
         var numpreg = 4
         var arreglopreg = arrayListOf<Question>()
         var dificultadst = 2
@@ -27,10 +27,11 @@ class MainActivity : AppCompatActivity() {
         opciones_button = findViewById(R.id.opciones_button)
         var intent = intent
         val topicsarray = intent.getIntegerArrayListExtra("topicsarray")
-        val preguntas = intent.getIntExtra("intNoQuestions", 0)
+        val preguntas = intent.getIntExtra("intNoQuestions", 5)
         val pistas = intent.getIntExtra("intNopistas", 0)
         val dificultad = intent.getIntExtra("dificultad", 2)
         val boolspistas = intent.getBooleanExtra("intspinpistas", false)
+        val flagenvio=intent.getBooleanExtra("flag",false)
         if (topicsarray != null) {
             topico=topicsarray
         }
@@ -39,14 +40,25 @@ class MainActivity : AppCompatActivity() {
         dificultadst=dificultad
         jugar_button.setOnClickListener { _ ->
             val game = Intent(this, Juego::class.java)
-            game.putExtra("topicsarray", topicsarray)
-            game.putExtra("intNoQuestions", preguntas);
-            game.putExtra("intNopistas", pistas);
-            game.putExtra("dificultad", dificultad)
-            game.putExtra("boolpistas", boolspistas)
-            startActivity(game)
+            if(!flagenvio) {
+                game.putExtra("topicsarray", topicsarray)
+                game.putExtra("intNoQuestions", preguntas);
+                game.putExtra("intNopistas", pistas);
+                game.putExtra("dificultad", dificultad)
+                game.putExtra("boolpistas", boolspistas)
+                startActivity(game)
+            }
 
+            if(flagenvio){
 
+                game.putExtra("topicsarray", topicsarray)
+                game.putExtra("intNoQuestions",preguntas);
+                game.putExtra("intNopistas", pistas);
+                game.putExtra("dificultad", dificultad  )
+                game.putExtra("boolpistas", boolspistas)
+                startActivity(game)
+
+            }
         }
 
         opciones_button.setOnClickListener { _ ->

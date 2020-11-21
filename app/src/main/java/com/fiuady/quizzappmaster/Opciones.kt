@@ -242,6 +242,7 @@ class Opciones : AppCompatActivity() {
         intent.putExtra("intNopistas", spinnerpistas.getSelectedItem().toString().toInt());
         intent.putExtra("dificultad", dificultad)
         intent.putExtra("intspinpistas", switch.isChecked)
+        intent.putExtra("flag",flagenvio)
         startActivity(intent)
     }
 

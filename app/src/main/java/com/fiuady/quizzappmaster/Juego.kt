@@ -52,6 +52,8 @@ class Juego : AppCompatActivity() {
         //val preguntas = game.getIntExtra("intNoQuestions", 5)
         val maxHints = game.getIntExtra("intNopistas", 0)
         val boolpistas = game.getBooleanExtra("boolpistas", false)
+        pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
+
 
         questionText.setText(gameModel.currentQuestion.questionText)
         opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -379,7 +381,7 @@ class Juego : AppCompatActivity() {
                     dialog.cancel()
                 }
             builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
+            //setContentView(R.layout.custom_dialog);
             builder.setPositiveButton("OK", null)
             builder.create()
             builder.show()
@@ -403,7 +405,7 @@ class Juego : AppCompatActivity() {
                     dialog.cancel()
                 }
             builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
+            //setContentView(R.layout.custom_dialog);
             builder.setPositiveButton("OK", null)
             builder.create()
             builder.show()
@@ -427,7 +429,7 @@ class Juego : AppCompatActivity() {
                     dialog.cancel()
                 }
             builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
+            //setContentView(R.layout.custom_dialog);
             builder.setPositiveButton("OK", null)
             builder.create()
             builder.show()
@@ -450,7 +452,7 @@ class Juego : AppCompatActivity() {
                     dialog.cancel()
                 }
             builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
+            //setContentView(R.layout.custom_dialog);
             //builder.setPositiveButton("OK", null)
             builder.create()
             builder.show()
@@ -469,7 +471,7 @@ class Juego : AppCompatActivity() {
             )
            // builder.setView(alto)
             builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
+          //  setContentView(R.layout.custom_dialog);
 
             builder.setView(alto)
 
@@ -499,7 +501,7 @@ class Juego : AppCompatActivity() {
                     dialog.cancel()
                 }
             builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
+            //setContentView(R.layout.custom_dialog);
             //builder.setPositiveButton("OK", null)
             builder.create()
             builder.show()
