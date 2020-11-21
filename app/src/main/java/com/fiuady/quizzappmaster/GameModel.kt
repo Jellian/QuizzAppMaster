@@ -599,7 +599,7 @@ class GameModel : ViewModel() {
     var correctas = 0
     var contestadas = 0
     var questioncheats = 0
-    var puntos =0.0
+    var puntos :Double=0.0
     var hints=0
     var finish = false
     fun random(): ArrayList<Question> {
@@ -712,10 +712,11 @@ class GameModel : ViewModel() {
 
     fun puntuacion(dificultad:Int) {
         hints=0
+        contestadas=0
+        correctas=0
+        questioncheats=0
         for (question in arreglo) {
-            if (question.status != 0)
-
-                contestadas++
+            if (question.status != 0) contestadas++
             if (question.correct) correctas++
             if (question.cheated) questioncheats++
             if(question.hints!=0) {
@@ -723,14 +724,15 @@ class GameModel : ViewModel() {
             }
         }
 
-        if (contestadas == numQuestions) {
+        if (contestadas == arreglo.size) {
             finish=true
+
             if(dificultad==3){
-                puntos=(correctas-questioncheats/numQuestions)*100.0
+                puntos=((correctas-questioncheats)/arreglo.size.toDouble())*100
             }
             if(dificultad==1 || dificultad ==2)
             {
-                puntos=(correctas-questioncheats/numQuestions)*100.0
+                puntos=((correctas-hints)/arreglo.size.toDouble())*100
             }
         }
 
