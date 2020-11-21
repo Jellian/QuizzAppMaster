@@ -218,6 +218,10 @@ class Juego : AppCompatActivity() {
             1 -> {
                 if (gameModel.currentQuestion.hints > 0) {
                     questionText.setTextColor(Color.parseColor("#FACA68"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
                 } else {
                     questionText.setTextColor(Color.parseColor("#217922"))
                     opcion1Button.isEnabled = false
@@ -229,6 +233,10 @@ class Juego : AppCompatActivity() {
             2 -> {
                 if (gameModel.currentQuestion.hints > 0) {
                     questionText.setTextColor(Color.parseColor("#FACA68"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
                 } else {
                     questionText.setTextColor(Color.parseColor("#FF0000"))
                     opcion1Button.isEnabled = false
@@ -346,6 +354,9 @@ class Juego : AppCompatActivity() {
                 for (i in 0 until buttonArray.size) {
                     if (buttonArray[i].text == getText(gameModel.currentQuestion.answer)) {
                         gameModel.currentQuestion.respuesta = i + 1
+                        buttonArrayAux[0].isEnabled = false
+                        buttonArrayAux[1].isEnabled = false
+                        buttonArrayAux[2].isEnabled = false
                     }
                     gameModel.currentQuestion.status = 1
                     status()
