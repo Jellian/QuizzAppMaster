@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical">
-    <Space
+      <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content" />
             <ImageView
                 android:id="@+id/ciencia_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/ciencia_text"
                 android:layout_margin="2dp"
@@ -90,7 +90,7 @@
                 android:layout_marginLeft="140dp" />
             <ImageView
                 android:id="@+id/cine_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/cine_text"
                 android:layout_margin="2dp"
@@ -114,7 +114,7 @@
 
             <ImageView
                 android:id="@+id/deporte_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/deporte_text"
                 android:layout_margin="2dp"
@@ -129,7 +129,7 @@
                 android:layout_marginLeft="140dp" />
             <ImageView
                 android:id="@+id/musica_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/musica_text"
                 android:layout_margin="2dp"
@@ -151,7 +151,7 @@
 
             <ImageView
                 android:id="@+id/arte_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/arte_text"
                 android:layout_margin="2dp"
@@ -167,7 +167,7 @@
 
             <ImageView
                 android:id="@+id/videojuegos_img"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/videojuegos_text"
                 android:layout_margin="2dp"
@@ -188,7 +188,7 @@
             android:id="@+id/spinner_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n_preguntas"
+            android:text="N° preguntas"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
@@ -244,7 +244,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="habilitar_pistas"
+            android:text="Habilitar pistas"
             />
     <LinearLayout
         android:layout_width="wrap_content"
