@@ -20,7 +20,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-
             android:text="Preguntas"
             android:textColorHint="#7A8089"
             android:textSize="12sp" />
@@ -44,9 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="1dp"
-
             android:gravity="center"
-            android:text="Puntos"
+            android:text="Pistas"
             android:textSize="12sp" />
         <TextView
             android:id="@+id/pistas"
