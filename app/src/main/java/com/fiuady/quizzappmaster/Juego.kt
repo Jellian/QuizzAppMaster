@@ -208,7 +208,7 @@ class Juego : AppCompatActivity() {
 //        val gameModel: GameModel by viewModels()
         when (gameModel.currentQuestion.status) {
             0 -> {
-                //questionText.setTextColor(Color.parseColor("#000000"))
+                questionText.setTextColor(Color.parseColor("#000000"))
 //                opcion1Button.isEnabled = true
 //                opcion2Button.isEnabled = true
 //                opcion3Button.isEnabled = true
@@ -216,18 +216,26 @@ class Juego : AppCompatActivity() {
                 //dificultad()
             }
             1 -> {
-                // questionText.setTextColor(Color.parseColor("#00FF00"))
-                opcion1Button.isEnabled = false
-                opcion2Button.isEnabled = false
-                opcion3Button.isEnabled = false
-                opcion4Button.isEnabled = false
+                if (gameModel.currentQuestion.hints > 0) {
+                    questionText.setTextColor(Color.parseColor("#FACA68"))
+                } else {
+                    questionText.setTextColor(Color.parseColor("#217922"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                }
             }
             2 -> {
-                //questionText.setTextColor(Color.parseColor("#FF0000"))
-                opcion1Button.isEnabled = false
-                opcion2Button.isEnabled = false
-                opcion3Button.isEnabled = false
-                opcion4Button.isEnabled = false
+                if (gameModel.currentQuestion.hints > 0) {
+                    questionText.setTextColor(Color.parseColor("#FACA68"))
+                } else {
+                    questionText.setTextColor(Color.parseColor("#FF0000"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                }
             }
         }
         when (gameModel.currentQuestion.respuesta) {
