@@ -601,6 +601,7 @@ class GameModel : ViewModel() {
     var questioncheats = 0
     var puntos =0.0
     var hints=0
+    var finish = false
     fun random(): ArrayList<Question> {
         val size = topicsarray.size
         var arrayposition = 0
@@ -723,6 +724,7 @@ class GameModel : ViewModel() {
         }
 
         if (contestadas == numQuestions) {
+            finish=true
             if(dificultad==3){
                 puntos=(correctas-questioncheats/numQuestions)*100.0
             }

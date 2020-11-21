@@ -46,7 +46,7 @@ class Juego : AppCompatActivity() {
         pistas = findViewById(R.id.pistas)
         pistas_text = findViewById(R.id.Pistas_text)
         pregunta = findViewById(R.id.pregunta)
-
+       var finish=false
         var game = intent
         //val preguntas = game.getIntExtra("intNoQuestions", 5)
         val maxHints = game.getIntExtra("intNopistas", 0)
@@ -58,6 +58,14 @@ class Juego : AppCompatActivity() {
         opcion3Button.setText(gameModel.currentQuestion.answer3)
         opcion4Button.setText(gameModel.currentQuestion.answer4)
         gameModel.puntuacion(dificultad)
+        finish=gameModel.finish
+        var finish_u=gameModel.hints
+        var puntos = gameModel.puntos
+        var preguntas_bien = gameModel.correctas
+        if (finish==true){
+            resultados(finish_u,puntos,preguntas_bien)
+        }
+
         val buttonArray =
             arrayListOf<Button>(opcion1Button, opcion2Button, opcion3Button, opcion4Button)
         val buttonArrayAux = arrayListOf<Button>()
@@ -332,104 +340,123 @@ class Juego : AppCompatActivity() {
         }
     }
 
-    fun resultados(){
-        if (dificultad == 1 && pistas_u==0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val bajo = inflater.inflate(R.layout.third_place, null)
+    fun resultados(pistas_u :Int, puntos:Double, preguntas_bien:Int){
 
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $puntos," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(bajo)
-            builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
-        }
+            if (dificultad == 1 && pistas_u == 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val bajo = inflater.inflate(R.layout.third_place, null)
 
-        if (dificultad == 1 && pistas_u >0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val bajo = inflater.inflate(R.layout.third_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(bajo)
+                builder.setIcon(R.drawable.estrellita)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+            }
 
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $puntos," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(bajo)
-            builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
-        }
+            if (dificultad == 1 && pistas_u > 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val bajo = inflater.inflate(R.layout.third_place, null)
+
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(bajo)
+                builder.setIcon(R.drawable.patitas)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+            }
 
 
-        if (dificultad == 2 && pistas_u ==0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val medio = inflater.inflate(R.layout.second_place, null)
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $count," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(medio)
-            builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
+            if (dificultad == 2 && pistas_u == 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val medio = inflater.inflate(R.layout.second_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(medio)
+                builder.setIcon(R.drawable.estrellita)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
 
-        }
-        if (dificultad == 2 && pistas_u >0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val medio = inflater.inflate(R.layout.second_place, null)
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $count," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(medio)
-            builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
+            }
+            if (dificultad == 2 && pistas_u > 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val medio = inflater.inflate(R.layout.second_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(medio)
+                builder.setIcon(R.drawable.patitas)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
 
-        }
-        if (dificultad == 3 && pistas_u ==0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val alto = inflater.inflate(R.layout.first_place, null)
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $count," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(alto)
-            builder.setIcon(R.drawable.estrellita)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
-        }
-        if (dificultad == 3 && pistas_u >0) {
-            val builder = AlertDialog.Builder(this)
-            val inflater = LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val alto = inflater.inflate(R.layout.first_place, null)
-            builder.setTitle("Your Score is")
-            builder.setMessage("Tus puntos $count," +
-                    "     Tus pistas $pistas_u" +
-                    "     Tus preguntas bien $preguntas_bien")
-            builder.setView(alto)
-            builder.setIcon(R.drawable.patitas)
-            setContentView(R.layout.custom_dialog);
-            builder.setPositiveButton("OK", null)
-            builder.create()
-            builder.show()
-        }
+            }
+            if (dificultad == 3 && pistas_u == 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val alto = inflater.inflate(R.layout.first_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(alto)
+                builder.setIcon(R.drawable.estrellita)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+            }
+            if (dificultad == 3 && pistas_u > 0) {
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val alto = inflater.inflate(R.layout.first_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos $puntos," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(alto)
+                builder.setIcon(R.drawable.patitas)
+                setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+            }
 
 
 
