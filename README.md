@@ -1,7 +1,7 @@
 # QuizzAppMaster
 ### UNIVERSIDAD AUTÓNOMA DE YUCATÁN | FACULTAD DE INGENIERÍA | INGENIERÍA EN MECATRÓNICA
 Herramientas Avanzadas de Programación | Profesor: M.C. Edson G. Estrada López
-Reporte de Proyecto #1: Quiz App Basic (1.1)
+### Reporte de Proyecto #1: Quiz App Basic (1.1)
 Integrantes del equipo: [Poot Pérez, Addy Elvira](https://github.com/pootpaddy); [Rodríguez Vargas, Hannia Jellian](https://github.com/Jellian); [Villanueva Ojeda, David](https://github.com/D-villanueva).
 
 <p>El proyecto llamado “Quizz App Basic 1.1” es una aplicación de trivia de preguntas basado en los temas vistos en la clase. La finalidad del proyecto es crear una aplicación recreativa que haga un juego de preguntas aleatorias con tres partes. 
