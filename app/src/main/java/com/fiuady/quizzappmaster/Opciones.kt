@@ -52,7 +52,7 @@ class Opciones : AppCompatActivity() {
         bajo = findViewById(R.id.nivel_bajo)
 
 
-        //spinadp()
+        spinadp()
         medio.isChecked = true
         adapterpistas = ArrayAdapter<Int>(this, R.layout.support_simple_spinner_dropdown_item, num_pistas)
         spinnerpistas.setAdapter(adapterpistas)
@@ -242,6 +242,7 @@ class Opciones : AppCompatActivity() {
         intent.putExtra("intNopistas", spinnerpistas.getSelectedItem().toString().toInt());
         intent.putExtra("dificultad", dificultad)
         intent.putExtra("intspinpistas", switch.isChecked)
+        intent.putExtra("flag",flagenvio)
         startActivity(intent)
     }
 

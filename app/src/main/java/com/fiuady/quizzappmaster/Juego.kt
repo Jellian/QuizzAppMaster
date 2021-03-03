@@ -1,20 +1,23 @@
 package com.fiuady.quizzappmaster
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
+
 
 class Juego : AppCompatActivity() {
 
 
     private lateinit var questionText: TextView
     private lateinit var pregunta: TextView
+    private lateinit var pistas_text: TextView
     private lateinit var pistas: TextView
     private lateinit var prevButton: ImageButton
     private lateinit var nextButton: ImageButton
@@ -22,20 +25,16 @@ class Juego : AppCompatActivity() {
     private lateinit var opcion2Button: Button
     private lateinit var opcion3Button: Button
     private lateinit var opcion4Button: Button
-    var hints = 1
-    private var cont = 1
+
+    //var hints = 1
+    val dificultad = MainActivity.dificultadst
+    var dialogo_visto=0
+    //private var cont = 1
     private val gameModel: GameModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_juego)
-
-        var game = intent
-
-        val preguntas = game.getIntExtra("intNoQuestions", 5)
-        val maxHints = game.getIntExtra("intNopistas", 0)
-        val boolpistas = game.getBooleanExtra("boolpistas", false)
-        val dificultad = game.getIntExtra("dificultad", 2)
-
+        //val gameModel: GameModel by viewModels()
         questionText = findViewById(R.id.question_text)
         prevButton = findViewById(R.id.prev_button)
         nextButton = findViewById(R.id.next_button)
@@ -43,26 +42,50 @@ class Juego : AppCompatActivity() {
         opcion2Button = findViewById(R.id.opcion2_button)
         opcion3Button = findViewById(R.id.opcion3_button)
         opcion4Button = findViewById(R.id.opcion4_button)
+
         pistas = findViewById(R.id.pistas)
+        pistas_text = findViewById(R.id.Pistas_text)
         pregunta = findViewById(R.id.pregunta)
+        //var finish=false
+        var game = intent
+        //val preguntas = game.getIntExtra("intNoQuestions", 5)
+        val maxHints = game.getIntExtra("intNopistas", 0)
+        val boolpistas = game.getBooleanExtra("boolpistas", false)
+        pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
+
+
         questionText.setText(gameModel.currentQuestion.questionText)
         opcion1Button.setText(gameModel.currentQuestion.answer1)
         opcion2Button.setText(gameModel.currentQuestion.answer2)
         opcion3Button.setText(gameModel.currentQuestion.answer3)
         opcion4Button.setText(gameModel.currentQuestion.answer4)
-        val buttonArray = arrayListOf<Button>(opcion1Button, opcion2Button, opcion3Button, opcion4Button)
+        gameModel.puntuacion(dificultad)
+        var finish = gameModel.finish
+        var finish_u = gameModel.hints
+        var puntos :Double= gameModel.puntos
+        var preguntas_bien = gameModel.correctas
+        if (finish == true) {
+            resultados(finish_u, puntos, preguntas_bien)
+        }
+
+        val buttonArray =
+            arrayListOf<Button>(opcion1Button, opcion2Button, opcion3Button, opcion4Button)
         val buttonArrayAux = arrayListOf<Button>()
         if (boolpistas) {
-            pistas.setText("${hints - 1}/${maxHints}")
-        } else pistas.setText("")
-       pregunta.setText("${1}/${preguntas}")
-        //pregunta.setText("${gameModel.currentQuestion}/${preguntas}")
+            pistas.setText("${gameModel.hints}/${maxHints}")
+        } else {
+            pistas_text.text = "N/A"
+            pistas.text = "-"
+        }
+
+        status()
         dificultadfun(buttonArray, buttonArrayAux, dificultad)
 
         opcion1Button.setOnClickListener { _ ->
             if (getText(gameModel.currentQuestion.answer) == opcion1Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
                 gameModel.currentQuestion.status = 1
+                gameModel.currentQuestion.correct = true
                 gameModel.currentQuestion.respuesta = 1
                 status()
             } else {
@@ -77,6 +100,7 @@ class Juego : AppCompatActivity() {
             if (getText(gameModel.currentQuestion.answer) == opcion2Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
                 gameModel.currentQuestion.status = 1
+                gameModel.currentQuestion.correct = true
                 gameModel.currentQuestion.respuesta = 2
                 status()
             } else {
@@ -91,6 +115,7 @@ class Juego : AppCompatActivity() {
             if (getText(gameModel.currentQuestion.answer) == opcion3Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
                 gameModel.currentQuestion.status = 1
+                gameModel.currentQuestion.correct = true
                 gameModel.currentQuestion.respuesta = 3
                 status()
             } else {
@@ -105,6 +130,7 @@ class Juego : AppCompatActivity() {
             if (getText(gameModel.currentQuestion.answer) == opcion4Button.text) {
                 Toast.makeText(this, R.string.correct_text, Toast.LENGTH_SHORT).show()
                 gameModel.currentQuestion.status = 1
+                gameModel.currentQuestion.correct = true
                 gameModel.currentQuestion.respuesta = 4
                 status()
             } else {
@@ -117,8 +143,9 @@ class Juego : AppCompatActivity() {
 
         nextButton.setOnClickListener { _ ->
             gameModel.nextQuestion()
+            gameModel.puntuacion(dificultad)
             buttonArrayAux.clear()
-            cont = 1
+            //cont = 1
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -127,12 +154,21 @@ class Juego : AppCompatActivity() {
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
             dificultadfun(buttonArray, buttonArrayAux, dificultad)
+            gameModel.puntuacion(dificultad)
+            var finish = gameModel.finish
+            var finish_u = gameModel.hints
+            var puntos:Double = gameModel.puntos
+            var preguntas_bien = gameModel.correctas
+            if (finish == true) {
+                //questionText.text=puntos.toString()
+                resultados(finish_u, puntos, preguntas_bien)
+            }
         }
 
         prevButton.setOnClickListener { _ ->
             gameModel.prevQuestion()
             buttonArrayAux.clear()
-            cont = 1
+            //cont = 1
             pregunta.text = ("${gameModel.currentQuestionIndex + 1}/${gameModel.questionNumber}")
             questionText.setText(gameModel.currentQuestion.questionText)
             opcion1Button.setText(gameModel.currentQuestion.answer1)
@@ -141,19 +177,28 @@ class Juego : AppCompatActivity() {
             opcion4Button.setText(gameModel.currentQuestion.answer4)
             status()
             dificultadfun(buttonArray, buttonArrayAux, dificultad)
+            gameModel.puntuacion(dificultad)
+            var finish = gameModel.finish
+            var finish_u = gameModel.hints
+            var puntos :Double= gameModel.puntos
+            var preguntas_bien = gameModel.correctas
+            if (finish == true) {
+                resultados(finish_u, puntos, preguntas_bien)
+            }
         }
 
         questionText.setOnClickListener {
 
             if (!boolpistas) {
             } else {
-                if (hints <= maxHints) {
+                //gameModel.puntuacion(dificultad)
+                if (gameModel.hints < maxHints) {
                     //pistas.text = ("${hints}/${maxHints}")
-                    hints++
-                    Toast.makeText(this, if (hints == maxHints) R.string.no_more_hints else R.string.cheater, Toast.LENGTH_SHORT).show()
+                    //hints++
+                    gameModel.currentQuestion.hints += 1
                     cheats(buttonArray, buttonArrayAux, dificultad)
-                    //dificultad(buttonArray)
-                    pistas.text = ("${hints - 1}/${maxHints}")
+                    gameModel.puntuacion(dificultad)
+                    pistas.text = ("${gameModel.hints}/${maxHints}")
                 }
             }
         }
@@ -163,7 +208,7 @@ class Juego : AppCompatActivity() {
 //        val gameModel: GameModel by viewModels()
         when (gameModel.currentQuestion.status) {
             0 -> {
-                //questionText.setTextColor(Color.parseColor("#000000"))
+                questionText.setTextColor(Color.parseColor("#000000"))
 //                opcion1Button.isEnabled = true
 //                opcion2Button.isEnabled = true
 //                opcion3Button.isEnabled = true
@@ -171,18 +216,34 @@ class Juego : AppCompatActivity() {
                 //dificultad()
             }
             1 -> {
-                // questionText.setTextColor(Color.parseColor("#00FF00"))
-                opcion1Button.isEnabled = false
-                opcion2Button.isEnabled = false
-                opcion3Button.isEnabled = false
-                opcion4Button.isEnabled = false
+                if (gameModel.currentQuestion.hints > 0) {
+                    questionText.setTextColor(Color.parseColor("#FACA68"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                } else {
+                    questionText.setTextColor(Color.parseColor("#217922"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                }
             }
             2 -> {
-                //questionText.setTextColor(Color.parseColor("#FF0000"))
-                opcion1Button.isEnabled = false
-                opcion2Button.isEnabled = false
-                opcion3Button.isEnabled = false
-                opcion4Button.isEnabled = false
+                if (gameModel.currentQuestion.hints > 0) {
+                    questionText.setTextColor(Color.parseColor("#FACA68"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                } else {
+                    questionText.setTextColor(Color.parseColor("#FF0000"))
+                    opcion1Button.isEnabled = false
+                    opcion2Button.isEnabled = false
+                    opcion3Button.isEnabled = false
+                    opcion4Button.isEnabled = false
+                }
             }
         }
         when (gameModel.currentQuestion.respuesta) {
@@ -255,7 +316,11 @@ class Juego : AppCompatActivity() {
 
     }
 
-    private fun dificultadfun(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
+    private fun dificultadfun(
+        buttonArray: ArrayList<Button>,
+        buttonArrayAux: ArrayList<Button>,
+        dificultad: Int
+    ) {
 //        val gameModel: GameModel by viewModels()
         // var buttonArrayAux = arrayListOf<Button>()
         //Este valor hay que mandarlo desde el menu opciones
@@ -278,14 +343,20 @@ class Juego : AppCompatActivity() {
         }
     }
 
-    private fun cheats(buttonArray: ArrayList<Button>, buttonArrayAux: ArrayList<Button>, dificultad: Int) {
-//        val gameModel: GameModel by viewModels()
-        // var buttonArrayAux = arrayListOf<Button>()
-        if (gameModel.currentQuestion.status == 0 && hints > 0) {
-            if (dificultad == 1) {
+    private fun cheats(
+        buttonArray: ArrayList<Button>,
+        buttonArrayAux: ArrayList<Button>,
+        dificultad: Int
+    ) {
+        //gameModel.puntuacion(dificultad)
+        if (gameModel.currentQuestion.status == 0 && gameModel.hints >= 0) {
+            if (dificultad == gameModel.currentQuestion.hints) {
                 for (i in 0 until buttonArray.size) {
                     if (buttonArray[i].text == getText(gameModel.currentQuestion.answer)) {
                         gameModel.currentQuestion.respuesta = i + 1
+                        buttonArrayAux[0].isEnabled = false
+                        buttonArrayAux[1].isEnabled = false
+                        buttonArrayAux[2].isEnabled = false
                     }
                     gameModel.currentQuestion.status = 1
                     status()
@@ -299,12 +370,180 @@ class Juego : AppCompatActivity() {
                 buttonArrayAux[0].isEnabled = false
                 buttonArrayAux[1].isEnabled = false
                 buttonArrayAux[2].isEnabled = false
-                for (j in 0 until (dificultad - cont)) {
+                for (j in 0 until (dificultad - gameModel.currentQuestion.hints)) {
                     buttonArrayAux[j].isEnabled = true
                 }
-                cont++
+                //cont++
             }
 
         }
     }
+
+    fun resultados(pistas_u: Int, puntos: Double, preguntas_bien: Int) {
+
+        if (dificultad == 1 && pistas_u == 0 && dialogo_visto==0) {
+                dialogo_visto += 1
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val bajo = inflater.inflate(R.layout.third_place, null)
+
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos ${puntos.toInt()}," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(bajo)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { dialog, id ->
+                        dialog.cancel()
+                    }
+                builder.setIcon(R.drawable.estrellita)
+                //setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+            }
+
+
+        if (dificultad == 1 && pistas_u > 0 && dialogo_visto==0) {
+
+                dialogo_visto+=1
+            val builder = AlertDialog.Builder(this)
+            val inflater =
+                LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val bajo = inflater.inflate(R.layout.third_place, null)
+
+            builder.setTitle("Your Score is")
+            builder.setMessage(
+                "Tus puntos ${puntos.toInt()}," +
+                        "     Tus pistas $pistas_u" +
+                        "     Tus preguntas bien $preguntas_bien"
+            )
+            builder.setView(bajo)
+                .setPositiveButton(
+                    "Ok"
+                ) { dialog, id ->
+                    dialog.cancel()
+                }
+            builder.setIcon(R.drawable.patitas)
+            //setContentView(R.layout.custom_dialog);
+            builder.setPositiveButton("OK", null)
+            builder.create()
+            builder.show()
+        }
+
+
+        if (dificultad == 2 && pistas_u == 0 && dialogo_visto==0) {
+                dialogo_visto+=1
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val medio = inflater.inflate(R.layout.second_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos ${puntos}," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(medio)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { dialog, id ->
+                        dialog.cancel()
+                    }
+                builder.setIcon(R.drawable.estrellita)
+                //setContentView(R.layout.custom_dialog);
+                builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+
+            }
+
+        if (dificultad == 2 && pistas_u > 0 &&dialogo_visto==0) {
+                dialogo_visto+=1
+                val builder = AlertDialog.Builder(this)
+                val inflater =
+                    LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+                val medio = inflater.inflate(R.layout.second_place, null)
+                builder.setTitle("Your Score is")
+                builder.setMessage(
+                    "Tus puntos ${puntos.toInt()}," +
+                            "     Tus pistas $pistas_u" +
+                            "     Tus preguntas bien $preguntas_bien"
+                )
+                builder.setView(medio)
+                    .setPositiveButton(
+                        "Ok"
+                    ) { dialog, _ ->
+                        dialog.cancel()
+                    }
+                builder.setIcon(R.drawable.patitas)
+                //setContentView(R.layout.custom_dialog);
+                //builder.setPositiveButton("OK", null)
+                builder.create()
+                builder.show()
+
+            }
+
+        if (dificultad == 3 && pistas_u == 0&& dialogo_visto==0) {
+                dialogo_visto+=1
+            val builder = AlertDialog.Builder(this)
+            val inflater =
+                LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val alto = inflater.inflate(R.layout.first_place, null)
+            builder.setTitle("Your Score is")
+            builder.setMessage(
+                "Tus puntos ${puntos.toInt()}," +
+                        "     Tus pistas $pistas_u" +
+                        "     Tus preguntas bien $preguntas_bien"
+            )
+           // builder.setView(alto)
+            builder.setIcon(R.drawable.estrellita)
+          //  setContentView(R.layout.custom_dialog);
+
+            builder.setView(alto)
+
+                .setPositiveButton(
+                    "Ok"
+                ) { dialog, id ->
+                    dialog.cancel()
+                }
+
+
+            builder.create()
+            builder.show()
+        }
+
+        if (dificultad == 3 && pistas_u > 0 &&dialogo_visto==0) {
+            dialogo_visto+=1
+            val builder = AlertDialog.Builder(this)
+            val inflater =
+                LayoutInflater.from(this@Juego).context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val alto = inflater.inflate(R.layout.first_place, null)
+            builder.setTitle("Your Score is")
+            builder.setMessage(
+                "Tus puntos ${puntos.toInt()}," +
+                        "     Tus pistas $pistas_u" +
+                        "     Tus preguntas bien $preguntas_bien"
+            )
+            builder.setView(alto)
+                .setPositiveButton(
+                    "Ok"
+                ) { dialog, id ->
+                    dialog.cancel()
+                }
+            builder.setIcon(R.drawable.patitas)
+            //setContentView(R.layout.custom_dialog);
+            //builder.setPositiveButton("OK", null)
+            builder.create()
+            builder.show()
+        }
+
+
+    }
+
+
 }

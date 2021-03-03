@@ -32,7 +32,7 @@
             android:layout_marginEnd="50dp"
             android:layout_marginLeft="50dp"
             android:gravity="center"
-            android:text="1/10"
+            android:text=""
             android:textColorHint="#7A8089"
             android:textSize="22sp"
             android:layout_marginRight="50dp" />
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="0/3"
+            android:text=""
             android:textColorHint="#7A8089"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="50dp"
@@ -113,7 +113,7 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="answer"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <Button
@@ -124,7 +124,7 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:text="answer"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <Button
@@ -135,7 +135,7 @@
             android:padding="10dp"
             android:textAllCaps="false"
             android:text="answer"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp" />
 
         <Button
@@ -146,7 +146,7 @@
             android:padding="10dp"
             android:textAllCaps="false"
             android:text="answer"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
 
